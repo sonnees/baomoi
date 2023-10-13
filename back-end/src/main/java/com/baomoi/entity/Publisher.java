@@ -3,33 +3,46 @@ package com.baomoi.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Getter @Setter @ToString
 @NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "publisher")
-public class Publisher {
+public class Publisher implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(columnDefinition = "varchar(100)")
-    private String name;
+    @Column(columnDefinition = "varchar(100)", nullable = false)
+    private String name = "";
 
-    @Column(columnDefinition = "varchar(100)")
-    private String email;
+    @Column(columnDefinition = "varchar(255)", nullable = false)
+    private String imageURLBrand = "";
 
-    @Column(columnDefinition = "varchar(10)")
-    private String phone;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "publisher",cascade = CascadeType.REMOVE)
+    private List<Article> articles = new ArrayList<>();
 
-    @Column(columnDefinition = "varchar(1000)")
-    private String description;
+    public Publisher(String name, String imageURLBrand, List<Article> articles) {
+        this.name = name;
+        this.imageURLBrand = imageURLBrand;
+        this.articles = articles;
+    }
 
-    @Column(columnDefinition = "varchar(255)")
-    private String imageURLBrand;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Publisher publisher = (Publisher) o;
+        return id == publisher.id && Objects.equals(name, publisher.name) && Objects.equals(imageURLBrand, publisher.imageURLBrand) && Objects.equals(articles, publisher.articles);
+    }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "publisher")
-    private List<Article> articles;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
 }

@@ -1,4 +1,4 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+# === Front end ===
 
 # dependencies
 front-end/baomoi/node_modules/
@@ -31,3 +31,31 @@ front-end/baomoi/.env*.local
 
 # typescript
 front-end/baomoi*.tsbuildinfo
+
+# === Back end ===
+back-end/.gradle
+back-end/build/
+back-end/!gradle/wrapper/gradle-wrapper.jar
+back-end/!**/src/main/**/build/
+back-end/!**/src/test/**/build/
+
+### STS ###
+back-end/.apt_generated
+back-end/.classpath
+back-end/.factorypath
+back-end/.project
+back-end/.settings
+back-end/.springBeans
+back-end/.sts4-cache
+back-end/bin/
+back-end/!**/src/main/**/bin/
+back-end/!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+back-end/.idea
+back-end/*.iws
+back-end/*.iml
+back-end/*.ipr
+back-end/out/
+back-end/!**/src/main/**/out/
+back-end/!**/src/test/**/out/

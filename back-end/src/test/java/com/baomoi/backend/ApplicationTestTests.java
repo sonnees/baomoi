@@ -1,13 +1,13 @@
-package com.baomoi.entity;
+package com.baomoi.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationConfigTests {
+class ApplicationTestTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }

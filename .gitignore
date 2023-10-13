@@ -1,0 +1,33 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+front-end/baomoi/node_modules/
+
+
+# Expo
+front-end/baomoi/.expo/
+front-end/baomoi/dist/
+front-end/baomoi/web-build/
+
+# Native
+front-end/baomoi/*.mobileprovision
+front-end/baomoi/*.orig.*
+front-end/baomoi/*.jks
+front-end/baomoi/*.p8
+front-end/baomoi/*.p12
+front-end/baomoi/*.key
+front-end/baomoi/*.mobileprovision
+
+# Metro
+front-end/baomoi/.metro-health-check*
+
+# debug
+front-end/baomoi/npm-debug.*
+front-end/baomoi/yarn-debug.*
+front-end/baomoi/yarn-error.*
+
+# local env files
+front-end/baomoi/.env*.local
+
+# typescript
+front-end/baomoi*.tsbuildinfo

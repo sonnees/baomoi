@@ -1,0 +1,7 @@
+npx expo install react-native-web@~0.19.6 react-dom@18.2.0 @expo/webpack-config@^19.0.0
+npm i react-native-elements
+npm i @react-navigation/native
+npm i @react-navigation/stack
+npm install --save @fortawesome/fontawesome-svg-core
+npm install --save @fortawesome/react-fontawesome
+npm install --save @fortawesome/free-solid-svg-icons

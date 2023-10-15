@@ -18,9 +18,5 @@ public class ArticleService {
     @Autowired
     public ArticleService(ArticleRepository articleRepository) { this.articleRepository = articleRepository;}
 
-    public boolean add(Article article) {return articleRepository.save(article).equals(article);}
-    public boolean addAll(List<Article> list) {return articleRepository.saveAll(list).equals(list);}
-    public List<Article> getAll() {return (List<Article>) articleRepository.findAll();}
-    public Optional<Article> getByID(UUID id) {return articleRepository.findById(id);}
-    public void delete(UUID id) {articleRepository.deleteById(id);}
+
 }

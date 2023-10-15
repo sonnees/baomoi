@@ -5,11 +5,9 @@
 
 <br>
 
-[Figma: https://bom.so/aPc7c8](https://bom.so/aPc7c8)
+[Figma here](https://bom.so/aPc7c8)
 
-<br>
-
-[code tại đây](https://github.com/sonnees/webapp-baomoi.git)
+[Source code here](https://github.com/sonnees/webapp-baomoi.git)
 ```git
  git clone https://github.com/sonnees/webapp-baomoi.git
 ```

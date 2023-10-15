@@ -17,9 +17,4 @@ public class PublisherService {
         this.publisherRepository = publisherRepository;
     }
 
-    public boolean add(Publisher publisher) {return publisherRepository.save(publisher).equals(publisher);}
-    public boolean addAll(List<Publisher> list) {return publisherRepository.saveAll(list).equals(list);}
-    public List<Publisher> getAll() {return (List<Publisher>) publisherRepository.findAll();}
-    public Optional<Publisher> getByID(long id) {return publisherRepository.findById(id);}
-    public void delete(long id) {publisherRepository.deleteById(id);}
 }

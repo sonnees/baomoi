@@ -85,7 +85,7 @@ public class Article implements Serializable {
                 ", contend='" + contend + '\'' +
                 ", category=" + category +
                 ", imageArticles=" + imageArticles +
-//                ", publisher=" + publisher +
+                ", publisher=" + publisher +
                 '}';
     }
 }

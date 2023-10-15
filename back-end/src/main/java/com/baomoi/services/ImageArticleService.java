@@ -18,9 +18,4 @@ public class ImageArticleService {
     @Autowired
     public ImageArticleService(ImageArticleRepository imageArticleRepository) { this.imageArticleRepository = imageArticleRepository;}
 
-    public boolean add(ImageArticle imageArticle) {return imageArticleRepository.save(imageArticle).equals(imageArticle);}
-    public boolean addAll(List<ImageArticle> list) {return imageArticleRepository.saveAll(list).equals(list);}
-    public List<ImageArticle> getAll() {return (List<ImageArticle>) imageArticleRepository.findAll();}
-    public Optional<ImageArticle> getByID(UUID id) {return imageArticleRepository.findById(id);}
-    public void delete(UUID id) {imageArticleRepository.deleteById(id);}
 }

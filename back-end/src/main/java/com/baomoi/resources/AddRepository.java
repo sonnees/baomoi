@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/publisher")
+@RequestMapping("api/v1/publisher")
 public class AddRepository {
     private final PublisherService service;
 
@@ -19,10 +19,6 @@ public class AddRepository {
         this.service = service;
     }
 
-    @GetMapping
-    public List<Publisher> getAll(){
-        return service.getAll();
-    }
 
     @GetMapping("/str")
     public String getString(){

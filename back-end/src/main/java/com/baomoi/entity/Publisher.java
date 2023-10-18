@@ -23,7 +23,7 @@ public class Publisher implements Serializable {
     @Column(columnDefinition = "varchar(255)", nullable = false)
     private String imageURLBrand = "";
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "publisher",cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "publisher",cascade = CascadeType.REMOVE)
     @ToString.Exclude
     private List<Article> articles = new ArrayList<>();
 

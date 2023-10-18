@@ -14,7 +14,6 @@ import java.util.UUID;
 @Table(name = "image_article")
 public class ImageArticle implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id = UUID.randomUUID();
 
     @Column(columnDefinition = "varchar(255)",nullable = false)
@@ -23,7 +22,7 @@ public class ImageArticle implements Serializable {
     @Column(columnDefinition = "varchar(255)",nullable = false)
     private String imageURL;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "article_id")
     private Article article;
 

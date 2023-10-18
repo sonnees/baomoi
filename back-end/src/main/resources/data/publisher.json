@@ -1,0 +1,27 @@
+[
+  {
+    "name":"DanTri",
+    "imageURLBrand":"../assets/publisher/dantri.png",
+    "articles":[]
+  },
+  {
+    "name":"NguoiLaoDong",
+    "imageURLBrand":"../assets/publisher/nguoilaodong.png",
+    "articles":[]
+  },
+  {
+    "name":"NhanDan",
+    "imageURLBrand":"../assets/publisher/nhandan.png",
+    "articles":[]
+  },
+  {
+    "name":"ThanhNien",
+    "imageURLBrand":"../assets/publisher/thanhnien.png",
+    "articles":[]
+  },
+  {
+    "name":"VnExpress",
+    "imageURLBrand":"../assets/publisher/vnexpress.png",
+    "articles":[]
+  }
+]

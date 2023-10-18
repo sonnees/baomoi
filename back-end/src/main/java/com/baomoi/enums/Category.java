@@ -11,9 +11,8 @@ public enum Category {
     CONGNGHE(7),
     AMTHUC(8),
     SUCKHOE(9),
-    LAMDEP(10),
-    THOISU(11),
-    KINHTE(12);
+    XE(10),
+    KINHTE(11);
 
     Category(int i) {
     }

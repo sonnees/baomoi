@@ -18,19 +18,17 @@ import java.util.UUID;
 
 @Getter @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "article")
 public class Article implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id = UUID.randomUUID();
+    private UUID id=UUID.randomUUID();
 
     @Column(columnDefinition = "varchar(200)", nullable = false)
     private String title ="";
 
     @Column(name = "post-time", nullable = false)
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime postTime = LocalDateTime.now();
@@ -38,7 +36,7 @@ public class Article implements Serializable {
     @Column(columnDefinition = "varchar(500)", nullable = false)
     private String summary="";
 
-    @Column(columnDefinition = "varchar(5000)", nullable = false)
+    @Column(columnDefinition = "varchar(10000)", nullable = false)
     private String contend="";
 
     @Enumerated
@@ -53,6 +51,17 @@ public class Article implements Serializable {
     private Publisher publisher = new Publisher();
 
     public Article(String title, LocalDateTime postTime, String summary, String contend, Category category, List<ImageArticle> imageArticles, Publisher publisher) {
+        this.title = title;
+        this.postTime = postTime;
+        this.summary = summary;
+        this.contend = contend;
+        this.category = category;
+        this.imageArticles = imageArticles;
+        this.publisher = publisher;
+    }
+
+    public Article(UUID id, String title, LocalDateTime postTime, String summary, String contend, Category category, List<ImageArticle> imageArticles, Publisher publisher) {
+        this.id = id;
         this.title = title;
         this.postTime = postTime;
         this.summary = summary;

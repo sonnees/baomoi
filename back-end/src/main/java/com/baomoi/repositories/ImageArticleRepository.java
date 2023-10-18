@@ -10,5 +10,4 @@ import java.util.UUID;
 
 @RepositoryRestResource(path = "image-article")
 public interface ImageArticleRepository extends JpaRepository<ImageArticle, UUID> {
-    public Optional<ImageArticle> findImageArticleByTitle(String title);
 }

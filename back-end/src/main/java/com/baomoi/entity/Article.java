@@ -37,7 +37,7 @@ public class Article implements Serializable {
     private String summary="";
 
     @Column(columnDefinition = "varchar(10000)", nullable = false)
-    private String contend="";
+    private String content="";
 
     @Enumerated
     @Column(nullable = false)

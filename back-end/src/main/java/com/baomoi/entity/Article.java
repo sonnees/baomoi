@@ -17,7 +17,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Getter @Setter
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "article")
 public class Article implements Serializable {
@@ -50,22 +50,11 @@ public class Article implements Serializable {
     @JoinColumn(name = "publisher_id", nullable = false)
     private Publisher publisher = new Publisher();
 
-    public Article(String title, LocalDateTime postTime, String summary, String contend, Category category, List<ImageArticle> imageArticles, Publisher publisher) {
+    public Article(String title, LocalDateTime postTime, String summary, String content, Category category, List<ImageArticle> imageArticles, Publisher publisher) {
         this.title = title;
         this.postTime = postTime;
         this.summary = summary;
-        this.contend = contend;
-        this.category = category;
-        this.imageArticles = imageArticles;
-        this.publisher = publisher;
-    }
-
-    public Article(UUID id, String title, LocalDateTime postTime, String summary, String contend, Category category, List<ImageArticle> imageArticles, Publisher publisher) {
-        this.id = id;
-        this.title = title;
-        this.postTime = postTime;
-        this.summary = summary;
-        this.contend = contend;
+        this.content = content;
         this.category = category;
         this.imageArticles = imageArticles;
         this.publisher = publisher;
@@ -91,7 +80,7 @@ public class Article implements Serializable {
                 ", title='" + title + '\'' +
                 ", postTime=" + postTime +
                 ", summary='" + summary + '\'' +
-                ", contend='" + contend + '\'' +
+                ", contend='" + content + '\'' +
                 ", category=" + category +
                 ", imageArticles=" + imageArticles +
                 ", publisher=" + publisher +

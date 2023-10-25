@@ -1,5 +1,5 @@
 {
-  "name": "baomoi",
+  "name": "oke",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -15,16 +15,15 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
-    "@react-navigation/stack": "^6.3.19",
+    "@react-navigation/stack": "^6.3.20",
     "expo": "~49.0.15",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.72.6",
     "react-native-elements": "^3.4.3",
+    "react-native-fast-image": "^8.6.3",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
-    "react-native-linear-gradient": "^2.8.3",
-    "react-native-tab-view": "^3.5.2",
     "react-native-web": "~0.19.6"
   },
   "devDependencies": {

@@ -1,16 +1,40 @@
 import {Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import i_logo from '../assets/login/Logo_baomoi.png'
+import {useNavigation} from "@react-navigation/native"
 
 export default function Login() {
+  let navigation = useNavigation()
+  let data ={
+    email:'sson@gmail.com',
+    password:'123'
+  }
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.container} >
       <View style={{ flex: 1 }}>
-        <Image style={styles.logo} source={i_logo}/>
-        <TextInput style={styles.input} placeholder='Số di động hoặc email'/>
-        <TextInput style={styles.input} placeholder='Mật khẩu' secureTextEntry />
-        <TouchableOpacity style={styles.btnLogin}>
+        <View style={{ marginLeft: '-10%', marginRight: '-10%', height: 34, backgroundColor: '#459ead', justifyContent:'center'}}>
+          <Text style={{ textAlign: 'center', fontSize: 16, fontWeight: 'bold', color: 'white'}}>ĐĂNG NHẬP</Text>
+        </View>
+        <Image style={styles.logo} source={require("../assets/login/Logo_baomoi.png")}/>
+        <View id='error' style={{display:'none'}}>
+          <Text style={{ color: 'red', textAlign: 'center', fontSize: 15, marginBottom: 10 }}>Vui lòng nhập đúng thông tin</Text>
+        </View>
+        <TextInput id="inputEmail" style={styles.input} placeholder='Số di động hoặc email' />
+        <TextInput id="inputPassword" style={styles.input} placeholder='Mật khẩu' secureTextEntry />
+        <TouchableOpacity style={styles.btnLogin}
+          onPress={() => { 
+            let inputEmail = document.getElementById('inputEmail').value;
+            let inputPassword = document.getElementById('inputPassword').value;
+            if (data.email == inputEmail && data.password == inputPassword)
+              navigation.navigate("Category", data)
+            else{
+              document.getElementById('error').style.display='flex'
+
+              document.getElementById('inputEmail').value=""
+              document.getElementById('inputPassword').value=""
+            }
+          }}
+        >
           <Text style={styles.textLogin}>Đăng nhập</Text>
         </TouchableOpacity>
         <View style={styles.contentAternativeLogin}>
@@ -44,7 +68,7 @@ const styles = StyleSheet.create({
   input: { 
     borderRadius: 3, 
     marginBottom: 10, 
-    padding: 10, 
+    paddingLeft:20, 
     fontSize: 16, 
     height: 38, 
     backgroundColor: '#F3F3F3' 

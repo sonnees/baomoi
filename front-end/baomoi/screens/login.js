@@ -5,7 +5,11 @@ import {useNavigation} from "@react-navigation/native"
 
 export default function Login() {
   let navigation = useNavigation()
-  let data ={
+  let [email, setEmail] = React.useState("")
+  let [password, setPassword] = React.useState("")
+  let [error, setError] = React.useState(false)
+
+  let user ={
     email:'sson@gmail.com',
     password:'123'
   }
@@ -16,23 +20,25 @@ export default function Login() {
           <Text style={{ textAlign: 'center', fontSize: 16, fontWeight: 'bold', color: 'white'}}>ĐĂNG NHẬP</Text>
         </View>
         <Image style={styles.logo} source={require("../assets/login/Logo_baomoi.png")}/>
-        <View id='error' style={{display:'none'}}>
+        {error &&
+        <View style={{ display: error }}>
           <Text style={{ color: 'red', textAlign: 'center', fontSize: 15, marginBottom: 10 }}>Vui lòng nhập đúng thông tin</Text>
         </View>
-        <TextInput id="inputEmail" style={styles.input} placeholder='Số di động hoặc email' />
-        <TextInput id="inputPassword" style={styles.input} placeholder='Mật khẩu' secureTextEntry />
+        }
+        <TextInput style={styles.input} placeholder='Số di động hoặc email' 
+          onChangeText={setEmail}
+        />
+        <TextInput style={styles.input} placeholder='Mật khẩu' secureTextEntry 
+          onChangeText={setPassword}
+        />
         <TouchableOpacity style={styles.btnLogin}
           onPress={() => { 
-            let inputEmail = document.getElementById('inputEmail').value;
-            let inputPassword = document.getElementById('inputPassword').value;
-            if (data.email == inputEmail && data.password == inputPassword)
-              navigation.navigate("Category", data)
+            if (user.email == email && user.password == password)
+              navigation.navigate("Category", user, )
             else{
-              document.getElementById('error').style.display='flex'
-
-              document.getElementById('inputEmail').value=""
-              document.getElementById('inputPassword').value=""
+              setError(true)
             }
+            console.log(email + " " + password)
           }}
         >
           <Text style={styles.textLogin}>Đăng nhập</Text>

@@ -8,9 +8,6 @@ import Category from './screens/category';
 
 export default function App() {
   const Stack = createStackNavigator()
-  const categoryOption = ()=>{
-
-  }
 
   return (
     <NavigationContainer>

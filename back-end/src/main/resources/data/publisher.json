@@ -1,27 +1,27 @@
 [
   {
     "name":"DanTri",
-    "imageURLBrand":"../assets/publisher/dantri.png",
+    "imageURLBrand":"https://i.imgur.com/OWaigIJ.png",
     "articles":[]
   },
   {
     "name":"NguoiLaoDong",
-    "imageURLBrand":"../assets/publisher/nguoilaodong.png",
+    "imageURLBrand":"https://i.imgur.com/i7OdCsY.png",
     "articles":[]
   },
   {
     "name":"NhanDan",
-    "imageURLBrand":"../assets/publisher/nhandan.png",
+    "imageURLBrand":"https://i.imgur.com/APzsQu5.png",
     "articles":[]
   },
   {
     "name":"ThanhNien",
-    "imageURLBrand":"../assets/publisher/thanhnien.png",
+    "imageURLBrand":"https://i.imgur.com/IB15Uy0.png",
     "articles":[]
   },
   {
     "name":"VnExpress",
-    "imageURLBrand":"../assets/publisher/vnexpress.png",
+    "imageURLBrand":"https://i.imgur.com/GNQguqW.png",
     "articles":[]
   }
 ]

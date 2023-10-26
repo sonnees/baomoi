@@ -43,7 +43,7 @@ public class Article implements Serializable {
     @Column(nullable = false)
     private Category category = Category.BONGDA;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "article", cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "article", cascade = CascadeType.ALL)
     private List<ImageArticle> imageArticles = new ArrayList<>();
 
     @ManyToOne(optional = false)

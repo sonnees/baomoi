@@ -68,20 +68,25 @@ export default function Category() {
 
   let Item = ({i}) =>(
     <View style={{width:'50%', height:102, margin:7, flex:1}}>
-      <TouchableOpacity style={{ flex: 1, shadowOffset:{width:1, height:0}, shadowOpacity:0.5, shadowRadius:4, shadowColor:'black', borderRadius:5}}>
+      <TouchableOpacity style={{ flex: 1, shadowOffset:{width:1, height:0}, shadowOpacity:0.5, shadowRadius:4, shadowColor:'black', borderRadius:5}}
+        onPress={()=>{
+          
+        }}
+      >
         <View style={{ height: '100%', width: "100%", borderRadius: 5, backgroundColor:'black', position:'absolute', zIndex:9, opacity:0.3}}></View>
         <Image style={{ height: '100%', width: "100%", borderRadius: 5 }} source={i.img}></Image>
-        <Text style={{ position: 'absolute', color: 'white', fontSize: fontSize-2 , zIndex:99, fontWeight:'bold', bottom:0, margin:10}}>{i.name}</Text>
+        <Text style={{ position: 'absolute', color: 'white', fontSize: fontSize - 2 , zIndex:99, fontWeight:'bold', bottom:0, margin:10}}>{i.name}</Text>
       </TouchableOpacity> 
     </View>
   )
 
   return (
     <View style={styles.container} >
-      <View style={{marginLeft: '-10%', marginRight: '-10%', height: 34, backgroundColor: '#459ead', flexDirection:'row', position:'absolute', top:0, right:0, left:0}}>
+      <View style={{marginLeft: '-10%', marginRight: '-10%', height: 34, backgroundColor: '#459ead', flexDirection:'row'}}>
         <Text style={{flex:3, marginLeft: "9%", textAlign: 'left', fontSize: fontSize, fontWeight: 'bold', color: 'white', alignSelf:'center'}}>CHUYÊN MỤC</Text>
         <TouchableOpacity style={{ flex: 1}}>
           <Image style={{ height: "50%", width: 'auto', resizeMode: 'contain', marginTop: 9 }} source={require("../assets/arrow-png-white.png")} />
+          {/* <Image style={{ height: "50%", width: 'auto', resizeMode: 'contain', marginTop: 9 }} source={{ uri:'https://drive.google.com/file/d/198svw541EpGiiNSd1k91fx52f-pIUgpA/view'}} /> */}
         </TouchableOpacity>
       </View>
       <ScrollView style={{ flex: 1, }}>

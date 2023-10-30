@@ -1,4 +1,4 @@
-package com.baomoi.entity;
+package com.baomoi.models;
 
 import com.baomoi.enums.Category;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -18,8 +18,7 @@ import java.util.UUID;
 
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-@Entity
-@Table(name = "article")
+@Entity @Table(name = "article")
 public class Article implements Serializable {
     @Id
     private UUID id=UUID.randomUUID();
@@ -71,19 +70,5 @@ public class Article implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Article{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", postTime=" + postTime +
-                ", summary='" + summary + '\'' +
-                ", contend='" + content + '\'' +
-                ", category=" + category +
-                ", imageArticles=" + imageArticles +
-                ", publisher=" + publisher +
-                '}';
     }
 }

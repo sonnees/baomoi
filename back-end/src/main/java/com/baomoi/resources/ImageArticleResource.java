@@ -1,7 +1,6 @@
 package com.baomoi.resources;
 
-import com.baomoi.entity.Article;
-import com.baomoi.entity.ImageArticle;
+import com.baomoi.models.ImageArticle;
 import com.baomoi.repositories.ImageArticleRepository;
 import com.baomoi.services.ImageArticleService;
 import org.springframework.web.bind.annotation.PostMapping;

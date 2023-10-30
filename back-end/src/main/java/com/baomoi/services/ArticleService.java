@@ -1,22 +1,35 @@
 package com.baomoi.services;
 
-import com.baomoi.entity.Article;
-import com.baomoi.entity.Publisher;
+import com.baomoi.dto.ArticleDTO;
+import com.baomoi.mapping.ArticleDTOMap;
+import com.baomoi.mapping.CategoryMap;
 import com.baomoi.repositories.ArticleRepository;
-import com.baomoi.repositories.PublisherRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class ArticleService {
     private final ArticleRepository articleRepository;
+    private final ArticleDTOMap articleDTOMap;
+    private final CategoryMap categoryMap;
 
-    @Autowired
-    public ArticleService(ArticleRepository articleRepository) { this.articleRepository = articleRepository;}
+    public ArticleService(ArticleRepository articleRepository, ArticleDTOMap articleDTOMap, CategoryMap categoryMap) {
+        this.articleRepository = articleRepository;
+        this.articleDTOMap = articleDTOMap;
+        this.categoryMap = categoryMap;
+    }
 
+    public Page<ArticleDTO> getAllDTOByCategory(String category, Pageable pageable){
+        int valueInt = categoryMap.getValueInt(category);
+        Page<Object[]> getAllDTOByCategory = articleRepository.getAllDTOByCategory(valueInt,pageable);
+        return articleDTOMap.toPage(getAllDTOByCategory);
+    }
+
+    public Page<ArticleDTO> getAllDTOByCategoryNew(Pageable pageable){
+        Page<Object[]> allDTOByCategoryNew = articleRepository.getAllDTOByCategoryNew(pageable);
+        return articleDTOMap.toPage(allDTOByCategoryNew);
+    }
 
 }

@@ -1,9 +1,8 @@
 package com.baomoi.resources;
 
-import com.baomoi.entity.Publisher;
+import com.baomoi.models.Publisher;
 import com.baomoi.repositories.PublisherRepository;
 import com.baomoi.services.PublisherService;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

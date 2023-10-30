@@ -1,4 +1,4 @@
-package com.baomoi.entity;
+package com.baomoi.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,10 +8,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Getter @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "image_article")
+@NoArgsConstructor @AllArgsConstructor
+@Entity @Table(name = "image_article")
 public class ImageArticle implements Serializable {
     @Id
     private UUID id = UUID.randomUUID();
@@ -43,15 +41,5 @@ public class ImageArticle implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "ImageArticle{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", imageURL='" + imageURL + '\'' +
-//                ", article=" + article +
-                '}';
     }
 }

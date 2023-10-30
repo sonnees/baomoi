@@ -1,4 +1,4 @@
-package com.baomoi.entity;
+package com.baomoi.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,8 +8,7 @@ import lombok.Setter;
 
 @Setter @Getter
 @NoArgsConstructor @AllArgsConstructor
-@Entity
-@Table(name = "config_user")
+@Entity @Table(name = "config_user")
 public class ConfigUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

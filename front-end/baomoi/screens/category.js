@@ -4,6 +4,12 @@ import React from 'react';
 export default function Category() {
   let fontSize = 16
   let DATA = [
+    
+    {
+      id: 'MOI',
+      name: 'Mới',
+      img: require('../assets/category/b_MOI.jpg')
+    },
     {
       id:'AMTHUC',
       name: 'Ẩm thực',
@@ -63,11 +69,11 @@ export default function Category() {
       id: 'XE',
       name: 'Xe',
       img: require('../assets/category/b_XE.jpg')
-    },
+    }
   ]
 
   let Item = ({i}) =>(
-    <View style={{width:'50%', height:102, margin:7, flex:1}}>
+    <View style={{width:'50%', height:105, margin:7, flex:1}}>
       <TouchableOpacity style={{ flex: 1, shadowOffset:{width:1, height:0}, shadowOpacity:0.5, shadowRadius:4, shadowColor:'black', borderRadius:5}}
         onPress={()=>{
           
@@ -89,17 +95,15 @@ export default function Category() {
           {/* <Image style={{ height: "50%", width: 'auto', resizeMode: 'contain', marginTop: 9 }} source={{ uri:'https://drive.google.com/file/d/198svw541EpGiiNSd1k91fx52f-pIUgpA/view'}} /> */}
         </TouchableOpacity>
       </View>
-      <ScrollView style={{ flex: 1, }}>
-        <View style={{ paddingTop: 20, paddingBottom: 20 }}>
-          <Text style={{ color: '#46A096', fontSize: fontSize - 4 }}>
-            Mời bạn chọn chuyên mục muốn đọc
-          </Text>
-        </View>
-        <FlatList style={{ flex: 1, marginLeft: -7, marginRight: -7 }}
-          data={DATA}
-          renderItem={({ item }) => <Item i={item} />}
-          numColumns={2} />
-      </ScrollView>
+      <View style={{ paddingTop: 20, paddingBottom: 20 }}>
+        <Text style={{ color: '#46A096', fontSize: fontSize - 4 }}>
+          Mời bạn chọn chuyên mục muốn đọc
+        </Text>
+      </View>
+      <FlatList style={{ flex: 1, marginLeft: -7, marginRight: -7 }}
+        data={DATA}
+        renderItem={({ item }) => <Item i={item} />}
+        numColumns={2} />
     </View >
   );
 }

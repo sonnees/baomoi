@@ -1,8 +1,8 @@
 package com.baomoi;
 
-import com.baomoi.entity.Article;
-import com.baomoi.entity.ImageArticle;
-import com.baomoi.entity.Publisher;
+import com.baomoi.models.Article;
+import com.baomoi.models.ImageArticle;
+import com.baomoi.models.Publisher;
 import com.baomoi.enums.Category;
 import com.baomoi.repositories.ArticleRepository;
 import com.baomoi.repositories.ImageArticleRepository;

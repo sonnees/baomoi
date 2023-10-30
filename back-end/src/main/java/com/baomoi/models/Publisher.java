@@ -1,4 +1,4 @@
-package com.baomoi.entity;
+package com.baomoi.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,10 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Getter @Setter @ToString
+@Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-@Entity
-@Table(name = "publisher")
+@Entity @Table(name = "publisher")
 public class Publisher implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

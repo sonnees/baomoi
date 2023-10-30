@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 import { FlatList, Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -10,7 +11,8 @@ const Item = ({ item }) => {
   // console.log(item.imageURL);
     return (
         
-        <View style={{flexDirection:'row', justifyContent:'space-around', height: 120,}}>
+        <TouchableOpacity>
+          <View style={{flexDirection:'row', justifyContent:'space-around', height: 120,}}>
             <View style={{flex:4, alignItems:'center'}}>
                 {/* <Image style={{flex:1, height: 120, width: 140, resizeMode:'contain'}} source={{uri: item.imageURL}}/> */}
                 <Image style={{flex:1, height: 120, width: 140, resizeMode:'contain'}} source={require('../assets/image_article/image_article1.jpg')}></Image>
@@ -20,7 +22,8 @@ const Item = ({ item }) => {
                 {/* <Image style={{height: 10, width: 'auto',}} source={{uri: item.article.publisher.imageURLBrand}}/> */}
                 <Image style={{height: 40,width: 40, resizeMode:'contain'}} source={require('../assets/publisher/dantri.png')}/>
             </View>
-        </View>
+          </View>
+        </TouchableOpacity>
         
     );
   };

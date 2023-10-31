@@ -10,8 +10,8 @@ export default function Login() {
   let [error, setError] = React.useState(false)
 
   let user ={
-    email:'sson@gmail.com',
-    password:'123'
+    email:'1',
+    password:'1'
   }
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.container} >

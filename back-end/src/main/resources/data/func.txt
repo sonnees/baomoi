@@ -1,0 +1,9 @@
+CREATE OR REPLACE FUNCTION string_agg(arr text[], separator text)
+RETURNS text AS $$
+DECLARE
+  result text;
+BEGIN
+  result := array_to_string(arr, separator);
+  RETURN result;
+END;
+$$ LANGUAGE plpgsql;

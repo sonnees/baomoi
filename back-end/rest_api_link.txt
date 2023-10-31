@@ -1,9 +1,11 @@
-default: page=0, size=3, order by 'postTime' desc
-http://localhost:8080/api/v1/article-page/articleDTO-category?category={name}&page={page}&size={size}
-http://localhost:8080/api/v1/article-page/articleDTO-category?category=DOCLA
-http://localhost:8080/api/v1/article-page/articleDTO-category?category=DOCLA&page=0&size=3
+default: page=0, size=5, order by 'postTime' desc
+http://localhost:8080/api/v1/article-page/article-category?category={name}&page={page}&size={size}
+http://localhost:8080/api/v1/article-page/article-category?category=DOCLA
+http://localhost:8080/api/v1/article-page/article-category?category=DOCLA&page=0&size=5
 
-http://localhost:8080/api/v1/article-page/articleDTO?page=0&size=3
+http://localhost:8080/api/v1/article-page/article-new?page=0&size=5
 
+http://localhost:8080/api/v1/article-page/article-detail?id={id}
+http://localhost:8080/api/v1/article-page/article-detail?id=da0e6f3a-0010-4bc7-99ef-d0cbc02137dd
 
 

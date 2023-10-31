@@ -13,18 +13,15 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "full-name", columnDefinition = "varchar(100)")
+    private String fullName;
     @Column(columnDefinition = "varchar(64)")
     private String passwordHash;
     @Column(columnDefinition = "varchar(100)")
     private String gmail;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "config_user_id")
-    private ConfigUser configUser;
-
-    public Account(String passwordHash, String gmail, ConfigUser configUser) {
+    public Account(String passwordHash, String gmail) {
         this.passwordHash = passwordHash;
         this.gmail = gmail;
-        this.configUser = configUser;
     }
 }

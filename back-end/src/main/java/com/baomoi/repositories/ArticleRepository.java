@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.util.List;
 import java.util.UUID;
 
 @RepositoryRestResource(path = "article")
@@ -19,13 +20,21 @@ public interface ArticleRepository extends JpaRepository<Article, UUID> {
             "left join (select distinct(article_id) article_id, imageurl from image_article) ia on a.id = ia.article_id " +
             "where a.category= :category " +
             "order by  a.\"post-time\" desc", nativeQuery = true)
-    public Page<Object[]> getAllDTOByCategory(@Param("category") int category, Pageable pageable);
+    Page<Object[]> getAllDTOByCategory(@Param("category") int category, Pageable pageable);
 
     @Query(value = "select a.id, a.title, a.\"post-time\", p.imageurlbrand, ia.imageurl " +
             "from article a " +
             "left join public.publisher p on p.id = a.publisher_id " +
             "left join (select distinct(article_id) article_id, imageurl from image_article) ia on a.id = ia.article_id " +
             "order by  a.\"post-time\" desc", nativeQuery = true)
-    public Page<Object[]> getAllDTOByCategoryNew(Pageable pageable);
+    Page<Object[]> getAllDTOByCategoryNew(Pageable pageable);
+
+    @Query(value = "select a.id, a.title, a.summary, a.content, a.\"post-time\", p.imageurlbrand, string_agg(ia.imageurl, ',') as imageurl from article a " +
+            "left join public.publisher p on p.id = a.publisher_id " +
+            "left join public.image_article ia on a.id = ia.article_id " +
+            "where a.id = :id " +
+            "group by a.id,p.imageurlbrand, a.\"post-time\" " +
+            "order by a.\"post-time\" desc", nativeQuery = true)
+    List<Object[]> getDetailById(UUID id);
 
 }

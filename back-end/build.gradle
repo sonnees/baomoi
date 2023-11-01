@@ -32,7 +32,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-//    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3'
     implementation 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.15.2'
     implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0'

@@ -26,7 +26,7 @@ public class Article implements Serializable {
     @Column(columnDefinition = "varchar(200)", nullable = false)
     private String title ="";
 
-    @Column(name = "post-time", nullable = false)
+    @Column(name = "post_time", nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)

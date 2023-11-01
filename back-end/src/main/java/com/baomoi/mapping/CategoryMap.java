@@ -1,39 +1,27 @@
 package com.baomoi.mapping;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@AllArgsConstructor
 public class CategoryMap {
-    public CategoryMap() {
-    }
-
     public int getValueInt(String category){
-        switch (category){
-            case "DOCLA":
-                return 1;
-            case "TINHYEU":
-                return 2;
-            case "GIAITRI":
-                return 3;
-            case "THEGIOI":
-                return 4;
-            case "PHAPLUAT":
-                return 5;
-            case "GIAODUC":
-                return 6;
-            case "CONGNGHE":
-                return 7;
-            case "AMTHUC":
-                return 8;
-            case "SUCKHOE":
-                return 9;
-            case "XE":
-                return 10;
-            case "KINHTE":
-                return 11;
-            case "BONGDA":
-                return 12;
-        }
-        return 12;
+        return switch (category) {
+            case "DOCLA" -> 1;
+            case "TINHYEU" -> 2;
+            case "GIAITRI" -> 3;
+            case "THEGIOI" -> 4;
+            case "PHAPLUAT" -> 5;
+            case "GIAODUC" -> 6;
+            case "CONGNGHE" -> 7;
+            case "AMTHUC" -> 8;
+            case "SUCKHOE" -> 9;
+            case "XE" -> 10;
+            case "KINHTE" -> 11;
+            case "BONGDA" -> 12;
+            default -> 13;
+        };
     }
 }

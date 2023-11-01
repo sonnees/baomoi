@@ -6,6 +6,7 @@ import com.baomoi.mapping.ArticleDTOMap;
 import com.baomoi.mapping.ArticleImageDTOMap;
 import com.baomoi.mapping.CategoryMap;
 import com.baomoi.repositories.ArticleRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -14,18 +15,12 @@ import java.util.UUID;
 
 
 @Service
+@AllArgsConstructor
 public class ArticleService {
     private final ArticleRepository articleRepository;
     private final ArticleDTOMap articleDTOMap;
     private final ArticleImageDTOMap articleImageDTOMap;
     private final CategoryMap categoryMap;
-
-    public ArticleService(ArticleRepository articleRepository, ArticleDTOMap articleDTOMap, ArticleImageDTOMap articleImageDTOMap, CategoryMap categoryMap) {
-        this.articleRepository = articleRepository;
-        this.articleDTOMap = articleDTOMap;
-        this.articleImageDTOMap = articleImageDTOMap;
-        this.categoryMap = categoryMap;
-    }
 
     public Page<ArticleDTO> getAllDTOByCategory(String category, Pageable pageable){
         int valueInt = categoryMap.getValueInt(category);

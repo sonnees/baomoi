@@ -19,15 +19,24 @@ Sử dụng `entity dto` để truyền dữ liệu tới front-end.<br>
 - default-page-size: 5. <br>
 - limit-param-name: 10. <br>
 ### API Endpoint
-Return page latest article by category:
-- `/article-page/article-category?category={name}`
-- `/article-page/article-category?category={name}&page={page}`
-- `/article-page/article-category?category={name}&page={page}&size={size}`
+- [GET] Return account by gmail and password (account not exist return null): <br>
+  `/account/login?gmail={gmail}&password={password}`
 
-Return page latest article:
-- `/article-page/article-new`
-- `/article-page/article-new?page={page}`
-- `/article-pagearticle-new?page={page}&size={size}`
+- [GET] Return config account by id account (config account not exist return null): <br>
+  `/config-account?id_account={id_account}`
 
-Return article by id:
-- `/article-page/article-detail?id={id}`
+- [POST | body-json] Update config account: <br>
+  `/config-account/add`
+
+- [GET] Return page latest article by category: <br>
+  `/article-page/article-category?category={name}` <br>
+  `/article-page/article-category?category={name}&page={page}` <br>
+  `/article-page/article-category?category={name}&page={page}&size={size}` <br>
+
+- [GET] Return page latest article: <br>
+  `/article-page/article-new` <br>
+  `/article-page/article-new?page={page}` <br>
+  `/article-pagearticle-new?page={page}&size={size}` <br>
+
+- [GET] Return article by id: <br>
+  `/article-page/article-detail?id={id}`

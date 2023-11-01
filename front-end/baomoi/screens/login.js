@@ -3,16 +3,14 @@ import React from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {useNavigation} from "@react-navigation/native"
 
+let ipv4 = ""
+
 export default function Login() {
   let navigation = useNavigation()
   let [email, setEmail] = React.useState("")
   let [password, setPassword] = React.useState("")
   let [error, setError] = React.useState(false)
 
-  let user ={
-    email:'1',
-    password:'1'
-  }
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.container} >
@@ -34,12 +32,28 @@ export default function Login() {
         />
         <TouchableOpacity style={styles.btnLogin}
           onPress={() => { 
-            if (user.email == email && user.password == password)
-              navigation.navigate("Category", user, )
-            else{
-              setError(true)
-            }
-            console.log(email + " " + password)
+            fetch("http://"+ipv4+":8080/api/v1/account/login?gmail=" + email + "&password=" + password)
+              .then(response => {
+                if (!response.ok)
+                  throw new Error('Network response was not ok');
+                return response.json()
+              })
+              .then(account =>{
+                if (account ==null)
+                  setError(true)
+                else{
+                  fetch("http://"+ipv4+":8080/api/v1/config-account?id_account=" +account.id)
+                    .then(response => {
+                      if (!response.ok)
+                        throw new Error('Network response was not ok');
+                      return response.json()})
+                    .then(configAccount => {
+                      navigation.navigate("Category",{ configAccount:configAccount,  account: account })
+                    })
+                    .catch(e => console.error(e));
+                }
+              })
+              .catch(e=>console.error(e));
           }}
         >
           <Text style={styles.textLogin}>Đăng nhập</Text>

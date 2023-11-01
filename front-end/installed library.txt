@@ -9,3 +9,4 @@ npm i react-native-keyboard-aware-scroll-view
 npm install --save @fortawesome/fontawesome-svg-core
 npm install --save @fortawesome/react-fontawesome
 npm install --save @fortawesome/free-solid-svg-icons
+npm i @react-native-community/slider

@@ -1,8 +1,12 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View, FlatList, ScrollView } from 'react-native';
 import React from 'react';
+import { useNavigation, useRoute } from "@react-navigation/native"
 
 export default function Category() {
-  let fontSize = 16
+  let navigation = useNavigation()
+  let route = useRoute()
+  let { configAccount, account } = route.params
+  let fontSize = configAccount.fontSize
   let DATA = [
     
     {
@@ -71,12 +75,13 @@ export default function Category() {
       img: require('../assets/category/b_XE.jpg')
     }
   ]
+  
 
   let Item = ({i}) =>(
     <View style={{width:'50%', height:105, margin:7, flex:1}}>
       <TouchableOpacity style={{ flex: 1, shadowOffset:{width:1, height:0}, shadowOpacity:0.5, shadowRadius:4, shadowColor:'black', borderRadius:5}}
         onPress={()=>{
-          
+          navigation.navigate("Profile", { configAccount: configAccount, account: account })
         }}
       >
         <View style={{ height: '100%', width: "100%", borderRadius: 5, backgroundColor:'black', position:'absolute', zIndex:9, opacity:0.3}}></View>
@@ -92,7 +97,6 @@ export default function Category() {
         <Text style={{flex:3, marginLeft: "9%", textAlign: 'left', fontSize: fontSize, fontWeight: 'bold', color: 'white', alignSelf:'center'}}>CHUYÊN MỤC</Text>
         <TouchableOpacity style={{ flex: 1}}>
           <Image style={{ height: "50%", width: 'auto', resizeMode: 'contain', marginTop: 9 }} source={require("../assets/arrow-png-white.png")} />
-          {/* <Image style={{ height: "50%", width: 'auto', resizeMode: 'contain', marginTop: 9 }} source={{ uri:'https://drive.google.com/file/d/198svw541EpGiiNSd1k91fx52f-pIUgpA/view'}} /> */}
         </TouchableOpacity>
       </View>
       <View style={{ paddingTop: 20, paddingBottom: 20 }}>

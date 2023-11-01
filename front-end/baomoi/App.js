@@ -8,6 +8,7 @@ import Category from './screens/category';
 import Home from './screens/home';
 import Search from './screens/search';
 import Detail from './screens/detail';
+import Profile from './screens/profile';
 
 export default function App() {
   const Stack = createStackNavigator()
@@ -42,6 +43,23 @@ export default function App() {
             };
           }
         }}/>
+        <Stack.Screen name='Profile' component={Profile} options={{
+          headerShown: false,
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          }
+        }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -13,6 +13,7 @@ export default function Login() {
     email:'1',
     password:'1'
   }
+
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.container} >
       <View style={{ flex: 1 }}>

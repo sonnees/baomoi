@@ -7,6 +7,7 @@ import com.baomoi.models.Article;
 import com.baomoi.repositories.ArticleRepository;
 import com.baomoi.services.ArticleService;
 import jakarta.persistence.criteria.Order;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,14 +20,11 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/article-page")
+@AllArgsConstructor
 public class ArticleResource {
     private final ArticleRepository articleRepository;
     private final ArticleService articleService;
 
-    public ArticleResource(ArticleRepository articleRepository, ArticleService articleService) {
-        this.articleRepository = articleRepository;
-        this.articleService = articleService;
-    }
 
     @GetMapping("/article-category")
     public Page<ArticleDTO> getAllDTOByCategory(
@@ -51,8 +49,4 @@ public class ArticleResource {
         return articleService.getDetailById(id.orElse(UUID.randomUUID()));
     }
 
-    @PostMapping("/add-list")
-    public void addList(@RequestBody List<Article> articles){
-        articleRepository.saveAll(articles);
-    }
 }

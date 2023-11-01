@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @SpringBootTest
-class PublisherRepositoryTest {
+class TestPublisherRepository {
     private final PublisherRepository publisherRepository;
     private final ArticleRepository articleRepository;
     private final ImageArticleRepository imageArticleRepository;
@@ -27,7 +27,7 @@ class PublisherRepositoryTest {
     private final UUID idImageArticle= UUID.randomUUID();
 
     @Autowired
-    public PublisherRepositoryTest(PublisherRepository publisherRepository, ArticleRepository articleRepository, ImageArticleRepository imageArticleRepository) {
+    public TestPublisherRepository(PublisherRepository publisherRepository, ArticleRepository articleRepository, ImageArticleRepository imageArticleRepository) {
         this.publisherRepository = publisherRepository;
         this.articleRepository = articleRepository;
         this.imageArticleRepository = imageArticleRepository;

@@ -1,6 +1,8 @@
 package com.baomoi.mapping;
 
 import com.baomoi.dto.ArticleDTO;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Component;
@@ -10,9 +12,8 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @Component
+@AllArgsConstructor
 public class ArticleDTOMap {
-    public ArticleDTOMap() {
-    }
 
     public Page<ArticleDTO> toPage(Page<Object[]> objects){
         if(objects==null)

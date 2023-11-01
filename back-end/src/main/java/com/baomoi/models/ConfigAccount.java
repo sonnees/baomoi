@@ -8,8 +8,8 @@ import lombok.Setter;
 
 @Setter @Getter
 @NoArgsConstructor @AllArgsConstructor
-@Entity @Table(name = "config_user")
-public class ConfigUser {
+@Entity @Table(name = "config_account")
+public class ConfigAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

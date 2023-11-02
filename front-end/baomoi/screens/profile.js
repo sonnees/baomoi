@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigation, useRoute } from "@react-navigation/native"
 import Slider from '@react-native-community/slider';
 
-let ipv4 = ""
+let ipv4 = "192.168.34.108"
 
 export default function Profile() {
   let route = useRoute()

@@ -48,7 +48,7 @@ export default function Login() {
                         throw new Error('Network response was not ok');
                       return response.json()})
                     .then(configAccount => {
-                      navigation.navigate("Category",{ configAccount:configAccount,  account: account })
+                      navigation.navigate("Home",{ configAccount:configAccount,  account: account })
                     })
                     .catch(e => console.error(e));
                 }

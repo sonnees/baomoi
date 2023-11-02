@@ -81,7 +81,7 @@ export default function Category() {
     <View style={{width:'50%', height:105, margin:7, flex:1}}>
       <TouchableOpacity style={{ flex: 1, shadowOffset:{width:1, height:0}, shadowOpacity:0.5, shadowRadius:4, shadowColor:'black', borderRadius:5}}
         onPress={()=>{
-          navigation.navigate("Profile", { configAccount: configAccount, account: account })
+          navigation.navigate("Home", { catagory:i.id })
         }}
       >
         <View style={{ height: '100%', width: "100%", borderRadius: 5, backgroundColor:'black', position:'absolute', zIndex:9, opacity:0.3}}></View>

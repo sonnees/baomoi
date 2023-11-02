@@ -2,6 +2,8 @@ import {Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react
 import React from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {useNavigation} from "@react-navigation/native"
+import { MyContext } from '../App';
+import { useContext } from 'react';
 
 let ipv4 = "192.168.34.108"
 
@@ -10,7 +12,7 @@ export default function Login() {
   let [email, setEmail] = React.useState("")
   let [password, setPassword] = React.useState("")
   let [error, setError] = React.useState(false)
-
+  let { setConfigAccount, setAccount } = useContext(MyContext)
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.container} >
@@ -48,7 +50,9 @@ export default function Login() {
                         throw new Error('Network response was not ok');
                       return response.json()})
                     .then(configAccount => {
-                      navigation.navigate("Home",{ configAccount:configAccount,  account: account })
+                      setConfigAccount(configAccount)
+                      setAccount(account)
+                      navigation.navigate("Home")
                     })
                     .catch(e => console.error(e));
                 }

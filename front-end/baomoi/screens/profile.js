@@ -42,7 +42,6 @@ export default function Profile() {
           onPress={()=>{
             configAccount.fontSize = fontSize;
             setConfigAccount(configAccount)
-
             console.log(JSON.stringify(configAccount))
             fetch("http://localhost:8080/api/v1/config-account/add", {
               method: "POST",

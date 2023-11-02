@@ -41,12 +41,7 @@ export default function Profile() {
         <TouchableOpacity style={{ flex: 1, right:0, position:'absolute'}}
           onPress={()=>{
             configAccount.fontSize = fontSize;
-<<<<<<< HEAD
             setConfigAccount(configAccount)
-=======
-            setsetConfigAccount(configAccount)
->>>>>>> master
-
             console.log(JSON.stringify(configAccount))
             fetch("http://localhost:8080/api/v1/config-account/add", {
               method: "POST",

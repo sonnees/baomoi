@@ -32,7 +32,7 @@ export default function Login() {
         />
         <TouchableOpacity style={styles.btnLogin}
           onPress={() => { 
-            fetch("http://"+ipv4+":8080/api/v1/account/login?gmail=" + email + "&password=" + password)
+            fetch("http://localhost:8080/api/v1/account/login?gmail=" + email + "&password=" + password)
               .then(response => {
                 if (!response.ok)
                   throw new Error('Network response was not ok');
@@ -42,7 +42,7 @@ export default function Login() {
                 if (account ==null)
                   setError(true)
                 else{
-                  fetch("http://"+ipv4+":8080/api/v1/config-account?id_account=" +account.id)
+                  fetch("http://localhost:8080/api/v1/config-account?id_account=" +account.id)
                     .then(response => {
                       if (!response.ok)
                         throw new Error('Network response was not ok');

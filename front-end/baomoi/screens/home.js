@@ -78,7 +78,9 @@ export default function Home() {
   return (
     <View style={styles.container}>
         <View style={{flexDirection:'row', backgroundColor: '#459ead', justifyContent:'space-around', alignItems:'center', height: 34}}>
+            <TouchableOpacity onPress={navigation.navigate('Category')} style={{height: 20, width: 20, position: 'absolute', left:'2%'}}>
             <Image style={{height: 20, width: 20, position: 'absolute', left:'2%'}} source={require('../assets/options.png')}/>
+            </TouchableOpacity>
             <Text style={{color:'#FFF', position: 'absolute', left:'10%'}}>{currentDate[2]+ ' tháng '+currentDate[1]+', '+currentDate[0]}</Text>
             <TouchableOpacity onPress={()=>navigation.navigate('Search')} style={{height: 20, width: 20, position: 'absolute', right:'10%'}}>
               <Image style={{height: 20, width: 20, position: 'absolute', right:'10%'}} source={require('../assets/search.png')}/>

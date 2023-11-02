@@ -57,12 +57,18 @@ export default function Home() {
     const [data, setData] = useState([]);
 
     const route = useRoute()
-    const {configAccount, account} = route.params;
+    // const { id } = route.params;
 
     useEffect(()=>{
       fetch("http://localhost:8080/api/v1/article-page/article-new?page=0&size=5")
       .then(response => response.json())
       .then(json => setData(json.content));
+  }, []);
+
+  useEffect(()=>{
+    fetch("http://localhost:8080/api/v1/article-page/article-new?page=0&size=5")
+    .then(response => response.json())
+    .then(json => setData(json.content));
   }, []);
 
     useEffect(() => {
@@ -81,14 +87,16 @@ export default function Home() {
   return (
     <View style={styles.container}>
         <View style={{flexDirection:'row', backgroundColor: '#459ead', justifyContent:'space-around', alignItems:'center', height: 34}}>
-            <TouchableOpacity onPress={()=> navigation.navigate('Category', {configAccount:configAccount, account:account})} style={{height: 20, width: 20, position: 'absolute', left:'2%'}}>
+            <TouchableOpacity onPress={()=> navigation.navigate('Category')} style={{height: 20, width: 20, position: 'absolute', left:'2%'}}>
               <Image style={{height: 20, width: 20, position: 'absolute', left:'2%'}} source={require('../assets/options.png')}/>
             </TouchableOpacity>
             <Text style={{color:'#FFF', position: 'absolute', left:'10%'}}>{currentDate[2]+ ' tháng '+currentDate[1]+', '+currentDate[0]}</Text>
             <TouchableOpacity onPress={()=>navigation.navigate('Search')} style={{height: 20, width: 20, position: 'absolute', right:'10%'}}>
               <Image style={{height: 20, width: 20, position: 'absolute', right:'10%'}} source={require('../assets/search.png')}/>
             </TouchableOpacity>
-            <Image style={{height: 20, width: 20, position: 'absolute', right:'2%'}} source={require('../assets/user.png')}/>
+            <TouchableOpacity onPress={()=>navigation.navigate('Profile')} style={{height: 20, width: 20, position: 'absolute', right:'2%'}}>
+              <Image style={{height: 20, width: 20, position: 'absolute', right:'2%'}} source={require('../assets/user.png')}/>
+            </TouchableOpacity>
         </View>
         <View style={{flex:16, marginHorizontal:10}}>
             <FlatList

@@ -3,7 +3,7 @@ import React from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {useNavigation} from "@react-navigation/native"
 
-let ipv4 = ""
+let ipv4 = "192.168.34.108"
 
 export default function Login() {
   let navigation = useNavigation()

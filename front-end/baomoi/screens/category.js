@@ -1,11 +1,12 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View, FlatList, ScrollView } from 'react-native';
 import React from 'react';
-import { useNavigation, useRoute } from "@react-navigation/native"
+import { useNavigation } from "@react-navigation/native"
+import { MyContext } from '../App';
+import { useContext } from 'react';
 
 export default function Category() {
   let navigation = useNavigation()
-  let route = useRoute()
-  let { configAccount, account } = route.params
+  let { configAccount } = useContext(MyContext)
   let fontSize = configAccount.fontSize
   let DATA = [
     

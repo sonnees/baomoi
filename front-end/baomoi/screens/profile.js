@@ -2,20 +2,25 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { useNavigation, useRoute } from "@react-navigation/native"
 import Slider from '@react-native-community/slider';
+import { MyContext } from '../App';
+import { useContext } from 'react';
 
 let ipv4 = "192.168.34.108"
 
 export default function Profile() {
-  let route = useRoute()
-  let { configAccount, account } = route.params
+  let { configAccount, setsetConfigAccount } = useContext(MyContext)
   let fontSizeO = configAccount.fontSize
-
+  let navigation = useNavigation()
   let [fontSize, setSize] = React.useState(fontSizeO)
 
   return (
     <View style={styles.container} >
       <View style={{ marginLeft: '-7%', marginRight: '-7%', height: 34, backgroundColor: '#459ead', flexDirection: 'row' }}>
-        <TouchableOpacity style={{ flex: 1 }}>
+        <TouchableOpacity style={{ flex: 1 }}
+          onPress={()=> {
+            navigation.navigate("Home")
+          }}
+        >
           <Image style={{ height: "50%", width: 'auto', resizeMode: 'contain', marginTop: 9}} source={require("../assets/arrow-png-white1.png")} />
         </TouchableOpacity>
         <Text style={{ flex: 4 , textAlign: 'center',marginRight:'22%', fontSize: fontSize, fontWeight: 'bold', color: 'white', alignSelf: 'center' }}>CÁ NHÂN</Text>
@@ -35,7 +40,9 @@ export default function Profile() {
         <Text style={{ fontSize: fontSize, fontWeight: 'bold', color:'#46A096' }}>CÀI ĐẶT</Text>
         <TouchableOpacity style={{ flex: 1, right:0, position:'absolute'}}
           onPress={()=>{
-            configAccount.fontSize = fontSize
+            configAccount.fontSize = fontSize;
+            setsetConfigAccount(configAccount)
+
             console.log(JSON.stringify(configAccount))
             fetch("http://localhost:8080/api/v1/config-account/add", {
               method: "POST",

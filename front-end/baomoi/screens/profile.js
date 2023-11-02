@@ -8,7 +8,7 @@ import { useContext } from 'react';
 let ipv4 = "192.168.34.108"
 
 export default function Profile() {
-  let { configAccount, setsetConfigAccount } = useContext(MyContext)
+  let { configAccount, setConfigAccount, account } = useContext(MyContext)
   let fontSizeO = configAccount.fontSize
   let navigation = useNavigation()
   let [fontSize, setSize] = React.useState(fontSizeO)
@@ -41,7 +41,11 @@ export default function Profile() {
         <TouchableOpacity style={{ flex: 1, right:0, position:'absolute'}}
           onPress={()=>{
             configAccount.fontSize = fontSize;
+<<<<<<< HEAD
+            setConfigAccount(configAccount)
+=======
             setsetConfigAccount(configAccount)
+>>>>>>> master
 
             console.log(JSON.stringify(configAccount))
             fetch("http://localhost:8080/api/v1/config-account/add", {

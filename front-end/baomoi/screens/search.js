@@ -1,7 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
+import { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { SafeAreaView, TouchableOpacity } from 'react-native';
 import { FlatList, Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { MyContext } from '../App';
 
 const Item = ({ item }) => {
   let fontSize=16
@@ -48,11 +50,12 @@ const Item = ({ item }) => {
 export default function Search() {
   let fontSize =16;
   const navigation = useNavigation();
+  const {ipv4, setIpv4} = useContext(MyContext);
 
   const [data, setData] = useState([]);
 
     useEffect(()=>{
-      fetch("http://localhost:8080/api/v1/article-page/article-new?page=0&size=3")
+      fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page=0&size=3')
       .then(response => response.json())
       .then(json => setData(json.content));
   }, []);
@@ -64,7 +67,7 @@ export default function Search() {
     <View style={styles.container}>
         <View style={{flexDirection:'row', backgroundColor: '#459ead', justifyContent:'space-around', alignItems:'center', height: 34}}>
           
-          <TextInput style={{borderWidth:1, position: 'absolute', left:'5%', paddingLeft:'10%', paddingVertical:3, borderRadius: 5, backgroundColor: '#d9dbda', width: '75%',}} placeholder='Tìm kiếm'/>
+          <TextInput style={{borderWidth:1, position: 'absolute', left:'5%', paddingLeft:'10%', paddingVertical:1, borderRadius: 5, backgroundColor: '#d9dbda', width: '75%',}} placeholder='Tìm kiếm'/>
           <Image style={{height: 20, width: 20, position: 'absolute', left:'7%'}} source={require('../assets/search.png')}/>
 
           <TouchableOpacity onPress={()=>navigation.navigate('Home')} style={{ position: 'absolute', right:'7%'}}>

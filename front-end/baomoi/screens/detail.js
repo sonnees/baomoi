@@ -1,8 +1,11 @@
 import {Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useContext } from 'react';
+import { MyContext } from '../App';
 
 export default function Detail({route}) {
+  const {ipv4, setIpv4} = useContext(MyContext);
 
   const { id, tg } = route.params;
   // console.log(tg);
@@ -13,7 +16,7 @@ export default function Detail({route}) {
   const [data, setData] = useState(dataDefaul);
 
   useEffect(()=>{
-      fetch("http://localhost:8080/api/v1/article-page/article-detail?id="+id)
+      fetch('http://'+ipv4+':8080/api/v1/article-page/article-detail?id='+id)
       .then(response => response.json())
       .then(json => setData(json));
   }, []);

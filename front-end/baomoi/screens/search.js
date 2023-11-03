@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { SafeAreaView, TouchableOpacity } from 'react-native';
 import { FlatList, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 
 const Item = ({ item }) => {
+  let fontSize=16
   const navigation = useNavigation();
   const [currentDate, setCurrentDate] = useState('');
   useEffect(() => {
@@ -21,13 +22,15 @@ const Item = ({ item }) => {
         <TouchableOpacity onPress={()=>navigation.navigate('Detail', {id: item.id, tg: checkDay(currentDate, item.postTime)+''}   )}>        
           <View style={{flexDirection:'row', justifyContent:'space-around', height: 120,}}>
             <View style={{flex:4, alignItems:'center'}}>
-                <Image style={{flex:1, height: 120, width: 140, resizeMode:'contain'}} source={{uri: item.imageURL}}/>
+                <Image style={{flex:1, height: 120, width: 140, borderRadius: 5, marginVertical:10}} source={{uri: item.imageURL}}/>
                 {/* <Image style={{flex:1, height: 120, width: 140, resizeMode:'contain'}} source={require('../assets/image_article/image_article1.jpg')}></Image> */}
             </View>
-            <View style={{flex:6,  justifyContent:'space-between', padding:10, marginLeft:10}}>
-                <Text numberOfLines={3} ellipsizeMode="tail" style={{flex:4}}>{item.title}</Text>
+            <View style={{flex:6, padding:10, marginLeft:10}}>
+                <SafeAreaView style={{height: fontSize*3+20}}>
+                  <Text numberOfLines={3} ellipsizeMode="tail" style={{flex:3, fontSize:fontSize}}>{item.title}</Text>
+                </SafeAreaView>
 
-                <View style={{flexDirection:'row', alignContent:'center', flex:1}}>
+                <View style={{flexDirection:'row', alignContent:'center', flex:1, position:'absolute', bottom:10}}>
                   <Image style={{height: 20, width: 50, resizeMode:'contain', alignSelf:'flex-start', marginRight:10}} source={{uri: item.imageURLBrand}}/>
                   <Text >• {checkDay(currentDate, item.postTime)}</Text>
                 </View>
@@ -76,7 +79,7 @@ export default function Search() {
             <Text style={{fontSize:18, fontWeight:400, paddingTop: 10, paddingLeft:10}}>NÓNG 24H</Text>
           </View>
 
-          <View style={{ height: 360}}>
+          <View style={{ height: 360, marginHorizontal:15}}>
               <FlatList
               data={data}
               renderItem={({item}) => <Item item={item} />}

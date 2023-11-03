@@ -4,12 +4,11 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { FlatList, Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 
 
 const Item = ({ item }) => {
-  let fontSize=20
+  let fontSize=16
   const navigation = useNavigation();
   const [currentDate, setCurrentDate] = useState('');
   useEffect(() => {
@@ -25,9 +24,9 @@ const Item = ({ item }) => {
     return (
         
         <TouchableOpacity onPress={()=>navigation.navigate('Detail', {id: item.id, tg: checkDay(currentDate, item.postTime)+''}   )}>        
-          <View style={{flexDirection:'row', justifyContent:'space-around', height: 120,}}>
+          <View style={{flexDirection:'row', justifyContent:'space-around', height: 120,gap:10}}>
             <View style={{flex:4, alignItems:'center'}}>
-                <Image style={{flex:1, height: 120, width: 140, resizeMode:'contain'}} source={{uri: item.imageURL}}/>
+                <Image style={{flex:1, height: 100, width: 140, borderRadius: 5, marginVertical:10}} source={{uri: item.imageURL}}/>
                 {/* <Image style={{flex:1, height: 120, width: 140, resizeMode:'contain'}} source={require('../assets/image_article/image_article1.jpg')}></Image> */}
             </View>
             <View style={{flex:6, padding:10, marginLeft:10}}>
@@ -52,24 +51,30 @@ const Item = ({ item }) => {
 
 
 export default function Home() {
+    const navigation = useNavigation();
     const [currentDate, setCurrentDate] = useState('');
-
+    const [load, setLoad] = useState(0);
     const [data, setData] = useState([]);
 
-    const route = useRoute()
-    // const { id } = route.params;
+    const route = useRoute();
+    const { catagory } = route.params || { catagory: "" };
 
-    useEffect(()=>{
-      fetch("http://localhost:8080/api/v1/article-page/article-new?page=0&size=5")
-      .then(response => response.json())
-      .then(json => setData(json.content));
-  }, []);
+  
+    useEffect(() => {
+      if (catagory !== "") {
+        console.log(catagory);
+        fetch('http://localhost:8080/api/v1/article-page/article-category?category='+catagory+'&page='+load+'&size=5')
+          .then(response => response.json())
+          .then(json => setData(json.content));
+      } else {
+        fetch('http://localhost:8080/api/v1/article-page/article-new?page='+load+'&size=10')
+          .then(response => response.json())
+          .then(json => setData(json.content));
+      }
+    }, [catagory]);
+  
 
-  useEffect(()=>{
-    fetch("http://localhost:8080/api/v1/article-page/article-new?page=0&size=5")
-    .then(response => response.json())
-    .then(json => setData(json.content));
-  }, []);
+  
 
     useEffect(() => {
       var date = new Date().getDate(); //Current Date
@@ -81,7 +86,24 @@ export default function Home() {
       setCurrentDate([year, month, date, hour, minute, second]);
     }, []);
 
-    const navigation = useNavigation();
+    
+
+    const handleScroll = (event) => {
+      setLoad(l++);
+      useEffect(() => {
+        if (catagory !== "") {
+          console.log(catagory);
+          fetch('http://localhost:8080/api/v1/article-page/article-category?category='+catagory+'&page='+load+'&size=5')
+            .then(response => response.json())
+            .then(json => setData(json.content));
+        } else {
+          fetch('http://localhost:8080/api/v1/article-page/article-new?page='+load+'&size=5')
+            .then(response => response.json())
+            .then(json => setData(json.content));
+        }
+      }, []);
+      console.log('Cuộn đến vị trí:', event.nativeEvent.contentOffset.y);
+    };
 
 
   return (
@@ -98,11 +120,12 @@ export default function Home() {
               <Image style={{height: 20, width: 20, position: 'absolute', right:'2%'}} source={require('../assets/user.png')}/>
             </TouchableOpacity>
         </View>
-        <View style={{flex:16, marginHorizontal:10}}>
+        <View style={{flex:16, marginHorizontal:15}}>
             <FlatList
             data={data}
             renderItem={({item}) => <Item item={item} />}
             // keyExtractor={item => item.id}
+            onScroll={handleScroll}
             />
 
         </View>

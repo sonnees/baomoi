@@ -1,10 +1,9 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { FlatList, Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { MyContext } from '../App';
 
 
 
@@ -21,7 +20,7 @@ const Item = ({ item }) => {
     var second = new Date().getSeconds(); //Current Year
     setCurrentDate([year, month, date, hour, minute, second]);
   }, []);
-    console.log(item.imageURL);
+  // console.log(item.imageURL);
     return (
         
         <TouchableOpacity onPress={()=>navigation.navigate('Detail', {id: item.id, tg: checkDay(currentDate, item.postTime)+''}   )}>        
@@ -55,28 +54,27 @@ export default function Home() {
     const navigation = useNavigation();
     const [currentDate, setCurrentDate] = useState('');
     const [load, setLoad] = useState(0);
-    const [flag, setFlag] = useState(false);
     const [data, setData] = useState([]);
-    const {ipv4, setIpv4} = useContext(MyContext);
-    
-    setIpv4('192.168.1.7');
-    // console.log(ipv4);
+
     const route = useRoute();
     const { catagory } = route.params || { catagory: "" };
 
   
     useEffect(() => {
       if (catagory !== "") {
-        // console.log(catagory);
-        fetch('http://'+ipv4+':8080/api/v1/article-page/article-category?category='+catagory+'&page='+load+'&size=5')
+        console.log(catagory);
+        fetch('http://localhost:8080/api/v1/article-page/article-category?category='+catagory+'&page='+load+'&size=5')
           .then(response => response.json())
           .then(json => setData(json.content));
       } else {
-        fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page='+load+'&size=10')
+        fetch('http://localhost:8080/api/v1/article-page/article-new?page='+load+'&size=10')
           .then(response => response.json())
           .then(json => setData(json.content));
       }
-    }, [catagory, ipv4]);
+    }, [catagory]);
+  
+
+  
 
     useEffect(() => {
       var date = new Date().getDate(); //Current Date
@@ -90,26 +88,22 @@ export default function Home() {
 
     
 
-    const   loadMoreData = () => {
-      if (!flag) {
-        // Đánh dấu bắt đầu tải dữ liệu
-        setLoad(load+1);
-        setFlag(true);
+    const handleScroll = (event) => {
+      setLoad(l++);
+      useEffect(() => {
         if (catagory !== "") {
-          // console.log(catagory);
-          fetch('http://'+ipv4+':8080/api/v1/article-page/article-category?category='+catagory+'&page='+load+'&size=5')
+          console.log(catagory);
+          fetch('http://localhost:8080/api/v1/article-page/article-category?category='+catagory+'&page='+load+'&size=5')
             .then(response => response.json())
-            .then(json => setData(data.concat(json.content)));
+            .then(json => setData(json.content));
         } else {
-          fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page='+load+'&size=5')
+          fetch('http://localhost:8080/api/v1/article-page/article-new?page='+load+'&size=5')
             .then(response => response.json())
-            .then(json => setData(data.concat(json.content)));
+            .then(json => setData(json.content));
         }
-
-        //isLoading: false, // Đánh dấu hoàn thành tải dữ liệu
-        setFlag(false);
-      }
-    }
+      }, []);
+      console.log('Cuộn đến vị trí:', event.nativeEvent.contentOffset.y);
+    };
 
 
   return (
@@ -131,8 +125,7 @@ export default function Home() {
             data={data}
             renderItem={({item}) => <Item item={item} />}
             // keyExtractor={item => item.id}
-            onEndReached={loadMoreData} // Xác định khi cần tải thêm dữ liệu
-            onEndReachedThreshold={0.1}
+            onScroll={handleScroll}
             />
 
         </View>
@@ -181,5 +174,3 @@ function checkDay(currentDate, day) {
     else if (currentDate[5]!=day[5])
       return currentDate[5] - day[5] + ' giây';
 }
-
-

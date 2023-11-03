@@ -30,6 +30,10 @@ public class AccountResource {
     public void add(@RequestBody Account account){
         accountService.add(account);
     }
+    @PostMapping("/add-list")
+    public void add(@RequestBody List<Account> list){
+        accountRepository.saveAll(list);
+    }
 
     @GetMapping("/login")
     public Account checkLogin(

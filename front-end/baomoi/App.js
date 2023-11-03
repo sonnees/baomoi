@@ -19,9 +19,11 @@ export default function App() {
   let [configAccount, setConfigAccount] = useState({})
   let [account, setAccount] = useState({})
   let [ipv4, setIpv4] = useState("")
+  let [user, setUser] = useState({})
+  let [publisher, setPublisher] = useState({})
 
   return (
-    <MyContext.Provider value={{ configAccount, setConfigAccount, account, setAccount, ipv4, setIpv4 }}>
+    <MyContext.Provider value={{ configAccount, setConfigAccount, account, setAccount, ipv4, setIpv4, user, setUser, publisher, setPublisher }}>
       <NavigationContainer> 
       <StatusBar backgroundColor="#459ead" barStyle="light-content" />
       <Stack.Navigator>

@@ -1,14 +1,13 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { useNavigation, useRoute } from "@react-navigation/native"
+import { useNavigation } from "@react-navigation/native"
 import Slider from '@react-native-community/slider';
 import { MyContext } from '../App';
 import { useContext } from 'react';
 
-let ipv4 = "192.168.34.108"
 
 export default function Profile() {
-  let { configAccount, setConfigAccount, account } = useContext(MyContext)
+  let { configAccount, setConfigAccount, account, setAccount, ipv4, setIpv4, user, setUser, publisher, setPublisher } = useContext(MyContext)
   let fontSizeO = configAccount.fontSize
   let navigation = useNavigation()
   let [fontSize, setSize] = React.useState(fontSizeO)
@@ -29,8 +28,8 @@ export default function Profile() {
       <View style={{ flex: 1, flexDirection: 'row', marginTop: 10,alignItems:'center'}}>
         <Image style={{ flex: 1, height: "80%", width: 'auto', resizeMode: 'contain', left:0}} source={require("../assets/user.png")} />
         <View style={{ flex: 5, marginLeft:10, justifyContent:'center'}}>
-          <Text style={{ fontSize: fontSize - 5, color: '#46A096' }}>{account.gmail}</Text>
-          <Text style={{ fontSize: fontSize + 5, fontWeight: 'bold' }}>{account.fullName}</Text>
+          <Text style={{ fontSize: fontSize - 5, color: '#46A096' }}>{account.role}</Text>
+          <Text style={{ fontSize: fontSize + 5, fontWeight: 'bold' }}>{user.fullName}</Text>
         </View>
       </View>
       <View style={{ flex: 0.3 }}></View>
@@ -72,6 +71,13 @@ export default function Profile() {
           />
         </View>
       </View>
+      <Slider
+        style={{ width: 200, height: 40 }}
+        minimumValue={0}
+        maximumValue={1}
+        minimumTrackTintColor="#FFFFFF"
+        maximumTrackTintColor="#000000"
+      />
       <View style={{ flex: 10 }}></View>
     </View >
   );

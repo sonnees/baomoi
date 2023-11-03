@@ -1,12 +1,25 @@
-{
-  "gmail": "sson12131415@gmail.com",
-  "passwordHash": "123",
-  "role": 2,
-  "users": {
-    "id": 1,
-    "fullName": "Nguyễn Văn Sơn",
-    "sex": 1
+[
+  {
+    "gmail": "sson12131415@gmail.com",
+    "passwordHash": "123",
+    "role": 2,
+    "users": {
+      "id": 1,
+      "fullName": "Nguyễn Văn Sơn",
+      "sex": 1
+    },
+    "configAccount": {}
   },
-  "configAccount": {}
-}
+  {
+    "gmail": "1@gmail.com",
+    "passwordHash": "123",
+    "role": 2,
+    "users": {
+      "id": 2,
+      "fullName": "Nguyễn Thị Mẹt",
+      "sex": 2
+    },
+    "configAccount": {}
+  }
+]
 

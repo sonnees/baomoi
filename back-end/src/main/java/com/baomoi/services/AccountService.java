@@ -32,7 +32,7 @@ public class AccountService {
 
     public Account checkLogin(String gmail, String password){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        Account account = accountRepository.findByGmail(gmail).get(0);
+        Account account = accountRepository.findAccountByGmail(gmail);
         if(account==null)
             return null;
 

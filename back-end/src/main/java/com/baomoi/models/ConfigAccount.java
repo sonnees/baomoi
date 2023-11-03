@@ -6,17 +6,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter @Getter
-@NoArgsConstructor @AllArgsConstructor
-@Entity @Table(name = "config_account")
+@AllArgsConstructor
+@Getter @Setter
+@Entity
+@Table(name = "config_account")
 public class ConfigAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "font_size")
     private int fontSize;
 
-    @OneToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "account_id")
-    private Account account;
+    public ConfigAccount() {
+        this.fontSize = 16;
+    }
 }

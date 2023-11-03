@@ -44,17 +44,9 @@ export default function Login() {
                 if (account ==null)
                   setError(true)
                 else{
-                  fetch("http://localhost:8080/api/v1/config-account?id_account=" +account.id)
-                    .then(response => {
-                      if (!response.ok)
-                        throw new Error('Network response was not ok');
-                      return response.json()})
-                    .then(configAccount => {
-                      setConfigAccount(configAccount)
-                      setAccount(account)
-                      navigation.navigate("Home")
-                    })
-                    .catch(e => console.error(e));
+                  setConfigAccount(account.configAccount)
+                  setAccount(account)
+                  navigation.navigate("Home")
                 }
               })
               .catch(e=>console.error(e));

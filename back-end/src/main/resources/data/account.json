@@ -1,7 +1,12 @@
 {
-  "id": 1,
-  "fullName": "Nguyễn Văn Sơn",
+  "gmail": "sson12131415@gmail.com",
   "passwordHash": "123",
-  "gmail": "sson12131415@gmail.com"
+  "role": 2,
+  "users": {
+    "id": 1,
+    "fullName": "Nguyễn Văn Sơn",
+    "sex": 1
+  },
+  "configAccount": {}
 }
 

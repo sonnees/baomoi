@@ -1,5 +1,6 @@
 package com.baomoi.models;
 
+import com.baomoi.enums.Roles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,31 +9,46 @@ import lombok.Setter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Setter @Getter
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @Entity @Table(name = "account")
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column(name = "full_name", columnDefinition = "varchar(100)")
-    private String fullName;
-    @Column(columnDefinition = "varchar(64)")
-    private String passwordHash;
     @Column(columnDefinition = "varchar(100)")
     private String gmail;
+    @Column(columnDefinition = "varchar(64)")
+    private String passwordHash;
 
-    public Account(String passwordHash, String gmail) {
-        this.passwordHash = passwordHash;
+    @Enumerated
+    private Roles role;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Users users = null;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Publisher publisher = null;
+
+    @OneToOne (cascade = CascadeType.ALL)
+    private ConfigAccount configAccount;
+
+    public Account(String gmail, String passwordHash, Roles role) {
         this.gmail = gmail;
+        this.passwordHash = passwordHash;
+        this.role = role;
     }
 
-    public Account(long id, String fullName, String passwordHash, String gmail) {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        String encode = bCryptPasswordEncoder.encode(passwordHash);
-
-        this.id = id;
-        this.fullName = fullName;
-        this.passwordHash = encode;
+    public Account(String gmail, String passwordHash, Roles role, Users users, ConfigAccount configAccount) {
         this.gmail = gmail;
+        this.passwordHash = passwordHash;
+        this.role = role;
+        this.users = users;
+        this.configAccount = configAccount;
+    }
+
+    public Account(String gmail, String passwordHash, Roles role, Publisher publisher, ConfigAccount configAccount) {
+        this.gmail = gmail;
+        this.passwordHash = passwordHash;
+        this.role = role;
+        this.publisher = publisher;
+        this.configAccount = configAccount;
     }
 }

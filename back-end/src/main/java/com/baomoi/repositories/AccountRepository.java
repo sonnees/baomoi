@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RepositoryRestResource(path = "account")
-public interface AccountRepository extends JpaRepository<Account, Long> {
-    List<Account> findByGmail(String gmail);
+public interface AccountRepository extends JpaRepository<Account, String> {
+    Account findAccountByGmail(String gmail);
 }

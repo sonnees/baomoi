@@ -24,6 +24,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MainController {
     ObjectMapper objectMapper ;
+    MySingletonService mySingletonService;
 
     @GetMapping("login")
     public String getFormLogin(Model model){
@@ -57,27 +58,8 @@ public class MainController {
             model.addAttribute("err",true);
             return "login";
         }
-        System.out.println(account.getGmail());
-
-        String restApi1 = "http://localhost:8080/api/v1/article-page/publisher?id="+account.getPublisher().getId();
-        httpRequest = HttpRequest.newBuilder()
-                .uri(new URI(restApi1))
-                .GET().build();
-        httpClient = HttpClient.newHttpClient();
-        send = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
-        List<ArticlePublisherDTO> articlePublishers = null;
-        try {
-            CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, ArticlePublisherDTO.class);
-            articlePublishers = objectMapper.readValue(send.body(), collectionType);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-            model.addAttribute("err",true);
-            return "login";
-        }
-
-        model.addAttribute("articlePublishers",articlePublishers);
-        model.addAttribute("account",account);
-        articlePublishers.forEach(System.out::println);
-        return "publisher/home";
+        mySingletonService.setAccount(account);
+        mySingletonService.setPublisher(account.getPublisher());
+        return "redirect:/publisher/home";
     }
 }

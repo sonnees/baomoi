@@ -32,7 +32,7 @@ public class AccountResource {
     }
     @PostMapping("/add-list")
     public void add(@RequestBody List<Account> list){
-        accountRepository.saveAll(list);
+        list.forEach(accountService::add);
     }
 
     @GetMapping("/login")

@@ -2,16 +2,13 @@ package com.baomoi.resources;
 
 import com.baomoi.dto.ArticleDTO;
 import com.baomoi.dto.ArticleImageDTO;
-import com.baomoi.enums.Category;
-import com.baomoi.models.Article;
+import com.baomoi.dto.ArticlePublisherDTO;
 import com.baomoi.repositories.ArticleRepository;
 import com.baomoi.services.ArticleService;
-import jakarta.persistence.criteria.Order;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,6 +44,15 @@ public class ArticleResource {
     public ArticleImageDTO getDetailById(
             @RequestParam("id") Optional<UUID> id){
         return articleService.getDetailById(id.orElse(UUID.randomUUID()));
+    }
+
+    @GetMapping("/publisher")
+    public List<ArticlePublisherDTO> getAllByIdPublisher(
+            @RequestParam("page") Optional<Integer> page,
+            @RequestParam("size") Optional<Integer> size,
+            @RequestParam("id") long id){
+        Pageable pageable = PageRequest.of(page.orElse(0),size.orElse(5));
+        return articleService.getAllByIdPublisher(id,pageable);
     }
 
 }

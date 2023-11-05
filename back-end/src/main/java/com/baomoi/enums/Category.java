@@ -2,6 +2,7 @@ package com.baomoi.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @AllArgsConstructor @Getter
 public enum Category {
@@ -20,4 +21,5 @@ public enum Category {
     BONGDA(12);
 
     private int value;
+
 }

@@ -6,18 +6,29 @@
     "users": {
       "id": 1,
       "fullName": "Nguyễn Văn Sơn",
-      "sex": 1
-    },
+      "sex": 1    },
     "configAccount": {}
   },
   {
-    "gmail": "1@gmail.com",
+    "gmail": "hieudong@gmail.com",
     "passwordHash": "123",
     "role": 2,
     "users": {
       "id": 2,
       "fullName": "Nguyễn Thị Mẹt",
       "sex": 2
+    },
+    "configAccount": {}
+  },
+  {
+    "gmail": "baothanhnien@gmail.com",
+    "passwordHash": "123",
+    "role": 2,
+    "publisher": {
+      "id": 4,
+      "name":"ThanhNien",
+      "imageURLBrand":"https://i.imgur.com/IB15Uy0.png",
+      "articles":[]
     },
     "configAccount": {}
   }

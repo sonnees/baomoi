@@ -12,7 +12,33 @@
 </head>
 <body>
 <div th:replace="~{/publisher/menu}"></div>
+<<<<<<< HEAD
+    <div class="container" style="margin-top: 70px;">
+        <table class="table">
+            <tr>
+                <th>Ảnh Bài Báo</th>
+                <th>Tiêu đề</th>
+                <th>Thời gian đăng bài</th>
+                <th>Thể loại</th>
+            </tr>
+            <tr th:each="a:${articles}">
+                <td>
+                    <img  th:src="${a.imageURL}" alt="" style="width: 150px; height: 100px; object-fit: cover; border-radius: 5px">
+                </td>
+                <td th:text="${a.title}"></td>
+                <td th:text="${a.postTime}"></td>
+                <td th:text="${a.category}"></td>
+            </tr>
+        </table>
+        <div style="display: flex; justify-content:center; align-items: center">
+            <div th:each="ps:${pageSize}" >
+                <a style="padding: 5px; background: aqua; color: black; margin-left: 10px; border-radius: 3px; text-decoration: none" th:href="@{/publisher/home(page=${ps})}" th:text="${ps}"></a>
+            </div>
+        </div>
+    </div>
+=======
 
 
+>>>>>>> master
 </body>
 </html>

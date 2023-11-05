@@ -37,4 +37,11 @@ public interface ArticleRepository extends JpaRepository<Article, UUID> {
             "order by a.\"post_time\" desc", nativeQuery = true)
     List<Object[]> getDetailById(UUID id);
 
+    @Query(value = "select a.id, a.title, a.summary, a.content, a.\"post_time\",a.category, string_agg(ia.imageurl, ',') as imageurl from article a " +
+            "            left join public.publisher p on p.id = a.publisher_id " +
+            "            left join public.image_article ia on a.id = ia.article_id " +
+            "            where a.publisher_id=:id" +
+            "            group by a.id, a.\"post_time\" " +
+            "            order by a.\"post_time\" desc",nativeQuery = true)
+    Page<Object[]> getAllByIdPublisher(long id,Pageable pageable);
 }

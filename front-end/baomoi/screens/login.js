@@ -12,7 +12,7 @@ export default function Login() {
   let [email, setEmail] = React.useState("")
   let [password, setPassword] = React.useState("")
   let [error, setError] = React.useState(false)
-  let { setConfigAccount, setAccount } = useContext(MyContext)
+  let { setConfigAccount, setAccount, setPublisher, setUser } = useContext(MyContext)
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.container} >
@@ -41,23 +41,18 @@ export default function Login() {
                 return response.json()
               })
               .then(account =>{
-                if (account ==null)
-                  setError(true)
-                else{
-                  fetch("http://localhost:8080/api/v1/config-account?id_account=" +account.id)
-                    .then(response => {
-                      if (!response.ok)
-                        throw new Error('Network response was not ok');
-                      return response.json()})
-                    .then(configAccount => {
-                      setConfigAccount(configAccount)
-                      setAccount(account)
-                      navigation.navigate("Home")
-                    })
-                    .catch(e => console.error(e));
-                }
+                
+                  if (account.role === 'USER')
+                    setUser(account.users)
+                  else
+                    setPublisher(account.publisher)
+
+                  setConfigAccount(account.configAccount)
+                  setAccount(account)
+                  navigation.navigate("Home")
+                
               })
-              .catch(e=>console.error(e));
+              .catch(e => setError(true));
           }}
         >
           <Text style={styles.textLogin}>Đăng nhập</Text>

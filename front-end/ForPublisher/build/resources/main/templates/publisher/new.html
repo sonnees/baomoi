@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Article</title>
+    <link rel="SHORTCUT ICON" type="image/x-icon" href="../../static/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:replace="~{/publisher/menu}"></div>
+
+    <div class="container">
+        <form action="/publisher/add-article" style="margin-top: 70px;" method="post" th:object="${article}">
+            <div class="form-group">
+                <select name="category" class="form-select" style="width: 20%; margin-bottom: 10px" th:value="*{category}">
+                    <option th:each="c:${categories}" th:value="${c.name}" th:text="${c.name()}"></option>
+                </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 10px">
+                <input th:field="*{title}" type="text"  class="form-control" placeholder="title" style=" font-size: 16px; margin-bottom: 10px; font-weight: bold">
+            </div>
+            <div class="form-group" style="margin-bottom: 10px">
+                <input th:field="*{summary}" type="text"  class="form-control" placeholder="summary" style=" font-size: 16px; margin-bottom: 10px">
+            </div>
+            <div class="form-group" style="margin-bottom: 10px">
+                <textarea th:field="*{content}" class="form-control" placeholder="content" style=" font-size: 16px; margin-bottom: 10px; height: 200px" ></textarea>
+            </div>
+            <div class="form-group">
+                <div id="imgAdd1" style="display: none">
+                    <label style="color: #858587">image 1</label>
+                    <input th:field="*{imageArticles[0].imageURL}" type="text" class="form-control row" placeholder="link image" style=" font-size: 16px; margin-bottom: 10px;width: 44%;margin-right: 10%; margin-left: 1%">
+                    <input th:field="*{imageArticles[0].title}" type="text"  class="form-control row" placeholder="title image" style=" font-size: 16px; margin-bottom: 10px; width: 44%;margin-left: 1%">
+                </div>
+                <div id="imgAdd2" style="display: none">
+                    <label style="color: #858587">image 2</label>
+                    <input th:field="*{imageArticles[1].imageURL}" type="text" class="form-control row" placeholder="link image" style=" font-size: 16px; margin-bottom: 10px;width: 44%;margin-right: 10%; margin-left: 1%">
+                    <input th:field="*{imageArticles[1].title}" type="text"  class="form-control row" placeholder="title image" style=" font-size: 16px; margin-bottom: 10px; width: 44%;margin-left: 1%">
+                </div>
+
+                <div id="imgAdd3" style="display: none">
+                    <label style="color: #858587">image 3</label>
+                    <input th:field="*{imageArticles[2].imageURL}" type="text" class="form-control row" placeholder="link image" style=" font-size: 16px; margin-bottom: 10px;width: 44%;margin-right: 10%; margin-left: 1%">
+                    <input th:field="*{imageArticles[2].title}" type="text"  class="form-control row" placeholder="title image" style=" font-size: 16px; margin-bottom: 10px; width: 44%;margin-left: 1%">
+                </div>
+
+            </div>
+            <div class="form-group" >
+                <button type="button" onclick="addImageF()" id="addImage" class="btn btn-secondary" style="font-weight: bold; width: 10% ; margin-bottom: 10px">add image</button>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success" style="font-weight: bold; width: 20% ; margin-top: 20px">Submit</button>
+
+            </div>
+
+        </form>
+    </div>
+
+</body>
+<script>
+    let index = 1;
+    function addImageF(){
+
+        document.getElementById("imgAdd"+index).style.display="block"
+        if(index===3) document.getElementById("addImage").style.display="none"
+        index++;
+    }
+</script>
+</html>

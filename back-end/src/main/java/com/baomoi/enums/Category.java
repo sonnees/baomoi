@@ -1,5 +1,10 @@
 package com.baomoi.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@AllArgsConstructor @Getter
 public enum Category {
     MOI(0),
     DOCLA(1),
@@ -15,6 +20,6 @@ public enum Category {
     KINHTE(11),
     BONGDA(12);
 
-    Category(int i) {
-    }
+    private int value;
+
 }

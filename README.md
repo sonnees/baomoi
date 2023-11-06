@@ -6,6 +6,7 @@
 ![Spring Boot Badge](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff&style=for-the-badge)
 
 ![ERD](/img/diagram.png)
+![ERD](/img/client-server.jpg)
 
 ## Mô tả
 Sử dụng `spring data rest` để giao tiếp với front-end. <br>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.baomoi.forpublisher.ApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-11-05T12:01:18" hostname="DESKTOP-90JUIDQ" time="0.849">
+<testsuite name="com.baomoi.forpublisher.ApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-11-06T00:35:26" hostname="DESKTOP-90JUIDQ" time="0.946">
   <properties/>
-  <testcase name="contextLoads()" classname="com.baomoi.forpublisher.ApplicationTests" time="0.849"/>
-  <system-out><![CDATA[19:01:16.357 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.baomoi.forpublisher.ApplicationTests]: ApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-19:01:16.458 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.baomoi.Application for test class com.baomoi.forpublisher.ApplicationTests
+  <testcase name="contextLoads()" classname="com.baomoi.forpublisher.ApplicationTests" time="0.946"/>
+  <system-out><![CDATA[07:35:24.460 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.baomoi.forpublisher.ApplicationTests]: ApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+07:35:24.575 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.baomoi.Application for test class com.baomoi.forpublisher.ApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -13,16 +13,17 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.1.5)
 
-2023-11-05T19:01:16.865+07:00  INFO 2108 --- [    Test worker] c.baomoi.forpublisher.ApplicationTests   : Starting ApplicationTests using Java 17.0.2 with PID 2108 (started by ADMIN in C:\SON.admin\VII\React\webapp-baomoi\front-end\ForPublisher)
-2023-11-05T19:01:16.867+07:00  INFO 2108 --- [    Test worker] c.baomoi.forpublisher.ApplicationTests   : No active profile set, falling back to 1 default profile: "default"
-2023-11-05T19:01:17.854+07:00  WARN 2108 --- [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
+2023-11-06T07:35:24.954+07:00  INFO 7984 --- [    Test worker] c.baomoi.forpublisher.ApplicationTests   : Starting ApplicationTests using Java 17.0.2 with PID 7984 (started by ADMIN in C:\SON.admin\VII\React\webapp-baomoi\front-end\ForPublisher)
+2023-11-06T07:35:24.956+07:00  INFO 7984 --- [    Test worker] c.baomoi.forpublisher.ApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2023-11-06T07:35:25.865+07:00  WARN 7984 --- [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: a1253162-079e-458e-8076-2d85770b0275
+Using generated security password: e230dea6-61c6-4ecb-bfb3-969fee3e196f
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2023-11-05T19:01:17.967+07:00  INFO 2108 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7dcb42a9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6af90849, org.springframework.security.web.context.SecurityContextHolderFilter@798dad3d, org.springframework.security.web.header.HeaderWriterFilter@1319bc2a, org.springframework.security.web.authentication.logout.LogoutFilter@46dcbeab, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@696db620, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3a7e365, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1d06f16f, org.springframework.security.web.access.ExceptionTranslationFilter@a09303]
-2023-11-05T19:01:18.490+07:00  INFO 2108 --- [    Test worker] c.baomoi.forpublisher.ApplicationTests   : Started ApplicationTests in 1.874 seconds (process running for 3.071)
+2023-11-06T07:35:25.975+07:00  INFO 7984 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@233db8e9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@40c2ce52, org.springframework.security.web.context.SecurityContextHolderFilter@46dcbeab, org.springframework.security.web.header.HeaderWriterFilter@31b82e0f, org.springframework.security.web.authentication.logout.LogoutFilter@5d94a2dc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@152c4495, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d06f16f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@18a19e, org.springframework.security.web.access.ExceptionTranslationFilter@497d4c96]
+2023-11-06T07:35:26.373+07:00  INFO 7984 --- [    Test worker] c.baomoi.forpublisher.ApplicationTests   : Started ApplicationTests in 1.623 seconds (process running for 2.791)
+98676eb8-ca58-4889-8123-7e57303d647a
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

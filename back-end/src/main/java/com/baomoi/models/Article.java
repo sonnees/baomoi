@@ -59,6 +59,16 @@ public class Article implements Serializable {
         this.publisher = publisher;
     }
 
+    public Article(UUID id, Publisher publisher) {
+        this.id = id;
+        this.publisher = publisher;
+    }
+
+    public Article(UUID id, List<ImageArticle> imageArticles) {
+        this.id = id;
+        this.imageArticles = imageArticles;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

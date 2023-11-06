@@ -9,6 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
+    <style>
+
+    </style>
 </head>
 <body>
 <div th:replace="~{/publisher/menu}"></div>
@@ -19,6 +22,7 @@
                 <th>Tiêu đề</th>
                 <th>Thời gian đăng bài</th>
                 <th>Thể loại</th>
+                <th>Tùy chọn</th>
             </tr>
             <tr th:each="a:${articles}">
                 <td>
@@ -27,6 +31,11 @@
                 <td th:text="${a.title}"></td>
                 <td th:text="${a.postTime}"></td>
                 <td th:text="${a.category}"></td>
+                <td>
+                    <a class="navbar-brand" th:href="@{/publisher/delete(id=${a.id})}" >
+                        <img  src="/delete.png" alt="" style="width: 20px; height: 20px; ">
+                    </a>
+                </td>
             </tr>
         </table>
         <div style="display: flex; justify-content:center; align-items: center">

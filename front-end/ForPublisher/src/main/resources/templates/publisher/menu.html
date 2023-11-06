@@ -10,21 +10,23 @@
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
 </head>
-<body>
+<body style="">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="height: 60px">
-    <div class="navbar navbar-light bg-light fixed-top" style="margin-left: 10%; margin-right: 10%">
-        <div class="inline">
-            <a class="navbar-brand" href="/publisher/home" >
-                <img src="/Logo_baomoi.png" style="width: 120px" class="d-inline-block align-top" alt="">
-            </a>
-            <a class="navbar-brand" href="/publisher/form-new-article" style="font-weight: bold; color: dodgerblue" >
-                New Article
-            </a>
-        </div>
+    <div class="navbar navbar-light bg-light fixed-top" style="margin-left: 8%; margin-right: 8%">
+
+        <a class="navbar-brand" href="/publisher/home" >
+            <img src="/Logo_baomoi.png" style="height: 29px" class="d-inline-block align-top" alt="">
+            <img src="/handshake.png" style="width: 20px; margin: 10px 10px 0 10px" class="d-inline-block align-top" alt="">
+            <img th:src="${publisher.imageURLBrand}"  style="height: 29px" class="d-inline-block align-top" alt="">
+        </a>
+
+        <a href="/publisher/form-new-article" style="text-decoration: none; background: dodgerblue;border-radius: 100px; padding: 0 40px; margin-left: -200px">
+            <span style="font-size: 30px; font-weight: bold; color: white">+</span>
+        </a>
 
         <a class="navbar-brand" href="/login" >
-            <img src="/check-out.png" style="width: 30px" class="d-inline-block align-top" alt="">
+            <img src="/check-out.png" style="width: 30px;" class="d-inline-block align-top" alt="">
         </a>
     </div>
 </nav>

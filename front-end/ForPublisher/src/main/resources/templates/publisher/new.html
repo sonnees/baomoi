@@ -53,7 +53,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-success" style="font-weight: bold; width: 20% ; margin-top: 20px">Submit</button>
+                <button id="submit" type="submit" class="btn btn-success" style="display: none;font-weight: bold; width: 20% ; margin-top: 20px">Submit</button>
 
             </div>
 
@@ -64,6 +64,7 @@
 <script>
     let index = 1;
     function addImageF(){
+        document.getElementById("submit").style.display="block"
 
         document.getElementById("imgAdd"+index).style.display="block"
         if(index===3) document.getElementById("addImage").style.display="none"

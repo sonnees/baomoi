@@ -3,6 +3,8 @@ package com.baomoi.resources;
 import com.baomoi.dto.ArticleDTO;
 import com.baomoi.dto.ArticleImageDTO;
 import com.baomoi.dto.ArticlePublisherDTO;
+import com.baomoi.models.Article;
+import com.baomoi.models.ImageArticle;
 import com.baomoi.repositories.ArticleRepository;
 import com.baomoi.services.ArticleService;
 import lombok.AllArgsConstructor;
@@ -53,6 +55,16 @@ public class ArticleResource {
             @RequestParam("id") long id){
         Pageable pageable = PageRequest.of(page.orElse(0),size.orElse(5));
         return articleService.getAllByIdPublisher(id,pageable);
+    }
+
+    @PostMapping("/add")
+    public void add(@RequestBody Article article){
+        articleRepository.save(article);
+    }
+
+    @GetMapping("/delete/{id}")
+    public void add(@PathVariable("id") UUID uuid){
+        articleRepository.deleteById(uuid);
     }
 
 }

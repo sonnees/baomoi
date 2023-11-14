@@ -27,7 +27,17 @@ public interface ArticleRepository extends JpaRepository<Article, UUID> {
             "left join public.publisher p on p.id = a.publisher_id " +
             "left join (select distinct(article_id) article_id, imageurl from image_article) ia on a.id = ia.article_id " +
             "order by  a.\"post_time\" desc", nativeQuery = true)
-    Page<Object[]> getAllDTOByCategoryNew(Pageable pageable);
+    Page<Object[]> getAllDTOByDateTime(Pageable pageable);
+
+    @Query(value = "SELECT a.id, a.title, a.\"post_time\", p.imageurlbrand, ia.imageurl " +
+            "FROM article a " +
+            "LEFT JOIN public.publisher p ON p.id = a.publisher_id " +
+            "LEFT JOIN (SELECT DISTINCT(article_id) article_id, imageurl FROM image_article) ia ON a.id = ia.article_id " +
+            "WHERE a.title LIKE %:keySearch% " +
+            "ORDER BY a.\"post_time\" DESC",
+            nativeQuery = true)
+    Page<Object[]> searchByTitle(Pageable pageable, @Param("keySearch") String keySearch);
+
 
     @Query(value = "select a.id, a.title, a.summary, a.content, a.\"post_time\", p.imageurlbrand, string_agg(ia.imageurl, ',') as imageurl from article a " +
             "left join public.publisher p on p.id = a.publisher_id " +
@@ -43,5 +53,5 @@ public interface ArticleRepository extends JpaRepository<Article, UUID> {
             "            where a.publisher_id=:id" +
             "            group by a.id, a.\"post_time\" " +
             "            order by a.\"post_time\" desc",nativeQuery = true)
-    Page<Object[]> getAllByIdPublisher(long id,Pageable pageable);
+    Page<Object[]> getAllByIdPublisher(@Param("id") long id,Pageable pageable);
 }

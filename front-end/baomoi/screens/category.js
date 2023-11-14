@@ -1,13 +1,17 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View, FlatList, ScrollView } from 'react-native';
+// Dev: sonnees
+
+import { Image, StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native';
 import React from 'react';
 import { useNavigation } from "@react-navigation/native"
-import { MyContext } from '../App';
+import { MyContext } from '../context';
 import { useContext } from 'react';
 
 export default function Category() {
   let navigation = useNavigation()
   let { configAccount } = useContext(MyContext)
   let fontSize = configAccount.fontSize
+
+  // categories
   let DATA = [
     
     {
@@ -77,14 +81,9 @@ export default function Category() {
     }
   ]
   
-
   let Item = ({i}) =>(
     <View style={{width:'50%', height:105, margin:7, flex:1}}>
-      <TouchableOpacity style={{ flex: 1, shadowOffset:{width:1, height:0}, shadowOpacity:0.5, shadowRadius:4, shadowColor:'black', borderRadius:5}}
-        onPress={()=>{
-          navigation.navigate("Home", { catagory:i.id })
-        }}
-      >
+      <TouchableOpacity style={{ flex: 1, shadowOffset:{width:1, height:0}, shadowOpacity:0.5, shadowRadius:4, shadowColor:'black', borderRadius:5}} onPress={()=>{navigation.navigate("Home", { catagory:i.id })}}>
         <View style={{ height: '100%', width: "100%", borderRadius: 5, backgroundColor:'black', position:'absolute', zIndex:9, opacity:0.3}}></View>
         <Image style={{ height: '100%', width: "100%", borderRadius: 5 }} source={i.img}></Image>
         <Text style={{ position: 'absolute', color: 'white', fontSize: fontSize - 2 , zIndex:99, fontWeight:'bold', bottom:0, margin:10}}>{i.name}</Text>
@@ -94,17 +93,17 @@ export default function Category() {
 
   return (
     <View style={styles.container} >
+      {/* header */}
       <View style={{marginLeft: '-10%', marginRight: '-10%', height: 34, backgroundColor: '#459ead', flexDirection:'row'}}>
         <Text style={{flex:3, marginLeft: "9%", textAlign: 'left', fontSize: fontSize, fontWeight: 'bold', color: 'white', alignSelf:'center'}}>CHUYÊN MỤC</Text>
-        <TouchableOpacity style={{ flex: 1}}>
+        <TouchableOpacity style={{ flex: 1}} onPress={() => {navigation.navigate("Home", { catagory: DATA[0].id })}}>
           <Image style={{ height: "50%", width: 'auto', resizeMode: 'contain', marginTop: 9 }} source={require("../assets/arrow-png-white.png")} />
         </TouchableOpacity>
       </View>
       <View style={{ paddingTop: 20, paddingBottom: 20 }}>
-        <Text style={{ color: '#46A096', fontSize: fontSize - 4 }}>
-          Mời bạn chọn chuyên mục muốn đọc
-        </Text>
+        <Text style={{ color: '#46A096', fontSize: fontSize - 4 }}>Mời bạn chọn chuyên mục muốn đọc</Text>
       </View>
+      {/* list data */}
       <FlatList style={{ flex: 1, marginLeft: -7, marginRight: -7 }}
         data={DATA}
         renderItem={({ item }) => <Item i={item} />}

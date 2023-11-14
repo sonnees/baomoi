@@ -33,8 +33,14 @@ public class ArticleService {
         return articleDTOMap.toPage(getAllDTOByCategory);
     }
 
-    public Page<ArticleDTO> getAllDTOByCategoryNew(Pageable pageable){
-        Page<Object[]> allDTOByCategoryNew = articleRepository.getAllDTOByCategoryNew(pageable);
+    public Page<ArticleDTO> getAllDTOByDateTime(Pageable pageable){
+        Page<Object[]> allDTOByCategoryNew = articleRepository.getAllDTOByDateTime(pageable);
+        return articleDTOMap.toPage(allDTOByCategoryNew);
+    }
+
+    public Page<ArticleDTO> searchByTitle(Pageable pageable,String keySearch){
+        String temp = keySearch.trim();
+        Page<Object[]> allDTOByCategoryNew = articleRepository.searchByTitle(pageable,temp);
         return articleDTOMap.toPage(allDTOByCategoryNew);
     }
 

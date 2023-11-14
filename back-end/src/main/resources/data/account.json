@@ -23,7 +23,7 @@
   {
     "gmail": "dantri@gmail.com",
     "passwordHash": "123",
-    "role": 2,
+    "role": 1,
     "publisher": {
       "id": 1,
       "name":"DanTri",
@@ -35,7 +35,7 @@
   {
     "gmail": "nguoilaodong@gmail.com",
     "passwordHash": "123",
-    "role": 2,
+    "role": 1,
     "publisher": {
       "id": 2,
       "name":"NguoiLaoDong",
@@ -47,7 +47,7 @@
   {
     "gmail": "nhandan@gmail.com",
     "passwordHash": "123",
-    "role": 2,
+    "role": 1,
     "publisher": {
       "id": 3,
       "name":"NhanDan",
@@ -59,7 +59,7 @@
   {
     "gmail": "thanhnien@gmail.com",
     "passwordHash": "123",
-    "role": 2,
+    "role": 1,
     "publisher": {
       "id": 4,
       "name":"ThanhNien",
@@ -71,7 +71,7 @@
   {
     "gmail": "vnexpress@gmail.com",
     "passwordHash": "123",
-    "role": 2,
+    "role": 1,
     "publisher": {
       "id": 5,
       "name":"VnExpress",

@@ -35,11 +35,21 @@ public class ArticleResource {
     }
 
     @GetMapping("/article-new")
-    public Page<ArticleDTO> getAllDTOByCategoryNew(
+    public Page<ArticleDTO> getAllDTOByDateTime(
             @RequestParam("page") Optional<Integer> page,
             @RequestParam("size") Optional<Integer> size){
         Pageable pageable = PageRequest.of(page.orElse(0),size.orElse(5));
-        return articleService.getAllDTOByCategoryNew(pageable);
+        return articleService.getAllDTOByDateTime(pageable);
+    }
+
+    @GetMapping("/search")
+    public Page<ArticleDTO> searchByTitle(
+            @RequestParam("page") Optional<Integer> page,
+            @RequestParam("size") Optional<Integer> size,
+            @RequestParam("keySearch") String keySearch
+            ){
+        Pageable pageable = PageRequest.of(page.orElse(0),size.orElse(5));
+        return articleService.searchByTitle(pageable,keySearch);
     }
 
     @GetMapping("/article-detail")

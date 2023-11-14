@@ -22,7 +22,7 @@ const Item = ({ item }) => {
     var second = new Date().getSeconds(); //Current Year
     setCurrentDate([year, month, date, hour, minute, second]);
   }, []);
-    console.log(item.imageURL);
+    // console.log(item.imageURL);
     return (
         
         <TouchableOpacity onPress={()=>navigation.navigate('Detail', {id: item.id, tg: checkDay(currentDate, item.postTime)+''}   )}>        
@@ -60,7 +60,7 @@ export default function Home() {
     const [data, setData] = useState([]);
     const {ipv4, setIpv4} = useContext(MyContext);
     
-    setIpv4('192.168.1.7');
+    // setIpv4('192.168.1.7');
     // console.log(ipv4);
     const route = useRoute();
     const { catagory } = route.params || { catagory: "" };

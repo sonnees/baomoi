@@ -22,4 +22,5 @@ public class ImageArticleResource {
     public void addList(@RequestBody List<ImageArticle> imageArticles){
         imageArticleRepository.saveAll(imageArticles);
     }
+
 }

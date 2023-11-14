@@ -39,6 +39,8 @@ back-end/!gradle/wrapper/gradle-wrapper.jar
 back-end/!**/src/main/**/build/
 back-end/!**/src/test/**/build/
 
+
+
 ### STS ###
 back-end/.apt_generated
 back-end/.classpath
@@ -49,7 +51,19 @@ back-end/.springBeans
 back-end/.sts4-cache
 back-end/bin/
 back-end/!**/src/main/**/bin/
-back-end/!**/src/test/**/bin/
+back-end/!**/src/test/**/bin/ 
+
+front-end/ForPublisher/.apt_generated
+front-end/ForPublisher/gradle/**
+front-end/ForPublisher/.classpath
+front-end/ForPublisher/.factorypath
+front-end/ForPublisher/.project
+front-end/ForPublisher/.settings
+front-end/ForPublisher/.springBeans
+front-end/ForPublisher/.sts4-cache
+front-end/ForPublisher/bin/
+front-end/ForPublisher/!**/src/main/**/bin/
+front-end/ForPublisher/!**/src/test/**/bin/ 
 
 ### IntelliJ IDEA ###
 back-end/.idea
@@ -59,3 +73,11 @@ back-end/*.ipr
 back-end/out/
 back-end/!**/src/main/**/out/
 back-end/!**/src/test/**/out/
+
+front-end/ForPublisher/.idea
+front-end/ForPublisher/*.iws
+front-end/ForPublisher/*.iml
+front-end/ForPublisher/*.ipr
+front-end/ForPublisher/out/
+front-end/ForPublisher/!**/src/main/**/out/
+front-end/ForPublisher/!**/src/test/**/out/

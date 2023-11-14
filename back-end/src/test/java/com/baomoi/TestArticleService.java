@@ -26,9 +26,16 @@ public class TestArticleService {
     }
 
     @Test
-    public void getAllDTOByCategoryNew(){
+    public void getAllDTOByDateTime(){
         Pageable pageable = PageRequest.of(0,5);
-        Page<ArticleDTO> allDTOByCategoryNew = articleService.getAllDTOByCategoryNew(pageable);
+        Page<ArticleDTO> allDTOByCategoryNew = articleService.getAllDTOByDateTime(pageable);
+        Assertions.assertNotNull(allDTOByCategoryNew);
+    }
+
+    @Test
+    public void searchByTitle(){
+        Pageable pageable = PageRequest.of(0,5);
+        Page<ArticleDTO> allDTOByCategoryNew = articleService.searchByTitle(pageable,"Tàu");
         Assertions.assertNotNull(allDTOByCategoryNew);
     }
 

@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -32,10 +33,11 @@ public class AccountService {
 
     public Account checkLogin(String gmail, String password){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        Account account = accountRepository.findByGmail(gmail).get(0);
+        Account account = accountRepository.findAccountByGmail(gmail);
         if(account==null)
             return null;
-
+        if(account.getPublisher()!= null)
+            account.getPublisher().setArticles(new ArrayList<>());
         boolean matches = bCryptPasswordEncoder.matches(password, account.getPasswordHash());
         if(!matches)
             return null;

@@ -6,6 +6,7 @@
 ![Spring Boot Badge](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff&style=for-the-badge)
 
 ![ERD](/img/diagram.png)
+![ERD](/img/client-server.jpg)
 
 ## Mô tả
 Sử dụng `spring data rest` để giao tiếp với front-end. <br>
@@ -36,7 +37,12 @@ Sử dụng `entity dto` để truyền dữ liệu tới front-end.<br>
 - [GET] Return page latest article: <br>
   `/article-page/article-new` <br>
   `/article-page/article-new?page={page}` <br>
-  `/article-pagearticle-new?page={page}&size={size}` <br>
+  `/article-page/article-new?page={page}&size={size}` <br>
+
+- [GET] Return page latest matching: <br>
+  `/article-page/search?keySearch={keySearch}` <br>
+  `/article-page/search?keySearch={keySearch}&page={page}` <br>
+  `/article-page/search?keySearch={keySearch}&page={page}&size={size}` <br>
 
 - [GET] Return article by id: <br>
   `/article-page/article-detail?id={id}`

@@ -2,16 +2,15 @@ package com.baomoi.resources;
 
 import com.baomoi.dto.ArticleDTO;
 import com.baomoi.dto.ArticleImageDTO;
-import com.baomoi.enums.Category;
+import com.baomoi.dto.ArticlePublisherDTO;
 import com.baomoi.models.Article;
+import com.baomoi.models.ImageArticle;
 import com.baomoi.repositories.ArticleRepository;
 import com.baomoi.services.ArticleService;
-import jakarta.persistence.criteria.Order;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,17 +35,46 @@ public class ArticleResource {
     }
 
     @GetMapping("/article-new")
-    public Page<ArticleDTO> getAllDTOByCategoryNew(
+    public Page<ArticleDTO> getAllDTOByDateTime(
             @RequestParam("page") Optional<Integer> page,
             @RequestParam("size") Optional<Integer> size){
         Pageable pageable = PageRequest.of(page.orElse(0),size.orElse(5));
-        return articleService.getAllDTOByCategoryNew(pageable);
+        return articleService.getAllDTOByDateTime(pageable);
+    }
+
+    @GetMapping("/search")
+    public Page<ArticleDTO> searchByTitle(
+            @RequestParam("page") Optional<Integer> page,
+            @RequestParam("size") Optional<Integer> size,
+            @RequestParam("keySearch") String keySearch
+            ){
+        Pageable pageable = PageRequest.of(page.orElse(0),size.orElse(5));
+        return articleService.searchByTitle(pageable,keySearch);
     }
 
     @GetMapping("/article-detail")
     public ArticleImageDTO getDetailById(
             @RequestParam("id") Optional<UUID> id){
         return articleService.getDetailById(id.orElse(UUID.randomUUID()));
+    }
+
+    @GetMapping("/publisher")
+    public List<ArticlePublisherDTO> getAllByIdPublisher(
+            @RequestParam("page") Optional<Integer> page,
+            @RequestParam("size") Optional<Integer> size,
+            @RequestParam("id") long id){
+        Pageable pageable = PageRequest.of(page.orElse(0),size.orElse(5));
+        return articleService.getAllByIdPublisher(id,pageable);
+    }
+
+    @PostMapping("/add")
+    public void add(@RequestBody Article article){
+        articleRepository.save(article);
+    }
+
+    @GetMapping("/delete/{id}")
+    public void add(@PathVariable("id") UUID uuid){
+        articleRepository.deleteById(uuid);
     }
 
 }

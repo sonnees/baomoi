@@ -24,4 +24,22 @@ public class CategoryMap {
             default -> 13;
         };
     }
+
+    public String getValueString(int category){
+        return switch (category) {
+            case  1-> "DOCLA";
+            case 2-> "TINHYEU";
+            case 3->"GIAITRI";
+            case 4->"THEGIOI" ;
+            case 5->"PHAPLUAT";
+            case 6->"GIAODUC" ;
+            case 7->"CONGNGHE";
+            case 8->"AMTHUC" ;
+            case 9->"SUCKHOE";
+            case 10->"XE" ;
+            case 11->"KINHTE" ;
+            case 12->"BONGDA" ;
+            default -> "";
+        };
+    }
 }

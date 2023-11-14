@@ -6,7 +6,8 @@
     "users": {
       "id": 1,
       "fullName": "Nguyễn Văn Sơn",
-      "sex": 1    },
+      "sex": 1
+    },
     "configAccount": {}
   },
   {
@@ -26,9 +27,9 @@
     "role": 1,
     "publisher": {
       "id": 1,
-      "name":"DanTri",
-      "imageURLBrand":"https://i.imgur.com/OWaigIJ.png",
-      "articles":[]
+      "name": "DanTri",
+      "imageURLBrand": "https://i.imgur.com/OWaigIJ.png",
+      "articles": []
     },
     "configAccount": {}
   },
@@ -38,9 +39,9 @@
     "role": 1,
     "publisher": {
       "id": 2,
-      "name":"NguoiLaoDong",
-      "imageURLBrand":"https://i.imgur.com/i7OdCsY.png",
-      "articles":[]
+      "name": "NguoiLaoDong",
+      "imageURLBrand": "https://i.imgur.com/i7OdCsY.png",
+      "articles": []
     },
     "configAccount": {}
   },
@@ -50,9 +51,9 @@
     "role": 1,
     "publisher": {
       "id": 3,
-      "name":"NhanDan",
-      "imageURLBrand":"https://i.imgur.com/APzsQu5.png",
-      "articles":[]
+      "name": "NhanDan",
+      "imageURLBrand": "https://i.imgur.com/APzsQu5.png",
+      "articles": []
     },
     "configAccount": {}
   },
@@ -62,9 +63,9 @@
     "role": 1,
     "publisher": {
       "id": 4,
-      "name":"ThanhNien",
-      "imageURLBrand":"https://i.imgur.com/IB15Uy0.png",
-      "articles":[]
+      "name": "ThanhNien",
+      "imageURLBrand": "https://i.imgur.com/IB15Uy0.png",
+      "articles": []
     },
     "configAccount": {}
   },
@@ -74,11 +75,10 @@
     "role": 1,
     "publisher": {
       "id": 5,
-      "name":"VnExpress",
-      "imageURLBrand":"https://i.imgur.com/GNQguqW.png",
-      "articles":[]
+      "name": "VnExpress",
+      "imageURLBrand": "https://i.imgur.com/GNQguqW.png",
+      "articles": []
     },
     "configAccount": {}
   }
 ]
-

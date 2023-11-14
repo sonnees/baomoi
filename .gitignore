@@ -55,6 +55,7 @@ back-end/!**/src/test/**/bin/
 
 front-end/ForPublisher/.apt_generated
 front-end/ForPublisher/gradle/**
+front-end/ForPublisher/.gradle/**
 front-end/ForPublisher/.classpath
 front-end/ForPublisher/.factorypath
 front-end/ForPublisher/.project

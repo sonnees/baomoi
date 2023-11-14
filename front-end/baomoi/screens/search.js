@@ -3,7 +3,8 @@ import { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { SafeAreaView, TouchableOpacity } from 'react-native';
 import { FlatList, Image, StyleSheet, Text, TextInput, View } from 'react-native';
-import { MyContext } from '../App';
+import { MyContext } from '../context';
+
 
 const Item = ({ item }) => {
   let fontSize=16

@@ -4,7 +4,8 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { FlatList, Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { MyContext } from '../App';
+import { MyContext } from '../context';
+
 
 
 

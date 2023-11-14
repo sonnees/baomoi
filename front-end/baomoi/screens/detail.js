@@ -2,7 +2,8 @@ import {Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useContext } from 'react';
-import { MyContext } from '../App';
+import { MyContext } from '../context';
+
 
 export default function Detail({route}) {
   const {ipv4, setIpv4} = useContext(MyContext);

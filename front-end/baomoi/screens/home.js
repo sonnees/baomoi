@@ -10,12 +10,13 @@ import { MyContext } from '../context';
 
 
 const Item = ({ item }) => {
-  let fontSize=16
+  // let fontSize=16
+  const {fontSize} = useContext(MyContext);
   const navigation = useNavigation();
   const [currentDate, setCurrentDate] = useState('');
   useEffect(() => {
     var date = new Date().getDate(); //Current Date
-    var month = new Date().getMonth() + 1; //Current Month
+    var month = new Date().getMonth() + 1; //Current Months
     var year = new Date().getFullYear(); //Current Year
     var hour = new Date().getHours(); //Current Year
     var minute = new Date().getMinutes(); //Current Year
@@ -67,11 +68,16 @@ export default function Home() {
 
   
     useEffect(() => {
-      if (catagory !== "") {
-        // console.log(catagory);
-        fetch('http://'+ipv4+':8080/api/v1/article-page/article-category?category='+catagory+'&page='+load+'&size=5')
+      setData([])
+      if (catagory == "MOI") {
+        fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page='+load+'&size=10')
           .then(response => response.json())
           .then(json => setData(json.content));
+      } else if (catagory !== "") {
+          // console.log(catagory);
+        fetch('http://'+ipv4+':8080/api/v1/article-page/article-category?category='+catagory+'&page='+load+'&size=5')
+        .then(response => response.json())
+        .then(json => setData(json.content));
       } else {
         fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page='+load+'&size=10')
           .then(response => response.json())
@@ -92,19 +98,23 @@ export default function Home() {
     
 
     const   loadMoreData = () => {
+      setData([])
       if (!flag) {
         // Đánh dấu bắt đầu tải dữ liệu
         setLoad(load+1);
         setFlag(true);
-        if (catagory !== "") {
-          // console.log(catagory);
-          fetch('http://'+ipv4+':8080/api/v1/article-page/article-category?category='+catagory+'&page='+load+'&size=5')
-            .then(response => response.json())
-            .then(json => setData(data.concat(json.content)));
-        } else {
-          fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page='+load+'&size=5')
-            .then(response => response.json())
-            .then(json => setData(data.concat(json.content)));
+        for (let index = 1; index <= load; index++) {
+          if (catagory !== "") {
+            // console.log(catagory);
+            fetch('http://'+ipv4+':8080/api/v1/article-page/article-category?category='+catagory+'&page='+index+'&size=5')
+              .then(response => response.json())
+              .then(json => setData(data.concat(json.content)));
+          } else {
+            fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page='+index+'&size=5')
+              .then(response => response.json())
+              .then(json => setData(data.concat(json.content)));
+          }
+          
         }
 
         //isLoading: false, // Đánh dấu hoàn thành tải dữ liệu
@@ -112,6 +122,7 @@ export default function Home() {
       }
     }
 
+    // console.log(data);
 
   return (
     <View style={styles.container}>
@@ -132,8 +143,8 @@ export default function Home() {
             data={data}
             renderItem={({item}) => <Item item={item} />}
             // keyExtractor={item => item.id}
-            onEndReached={loadMoreData} // Xác định khi cần tải thêm dữ liệu
-            onEndReachedThreshold={0.1}
+            // onEndReached={loadMoreData} // Xác định khi cần tải thêm dữ liệu
+            // onEndReachedThreshold={0.1}
             />
 
         </View>

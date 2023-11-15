@@ -17,7 +17,7 @@ public interface ArticleRepository extends JpaRepository<Article, UUID> {
     @Query(value = "select a.id, a.title, a.\"post_time\", p.imageurlbrand, ia.imageurl " +
             "from article a " +
             "left join public.publisher p on p.id = a.publisher_id " +
-            "left join (select distinct(article_id) article_id, imageurl from image_article) ia on a.id = ia.article_id " +
+            "left join (select article_id, max(imageurl) as imageurl from image_article group by article_id) ia on a.id = ia.article_id " +
             "where a.category= :category " +
             "order by  a.\"post_time\" desc", nativeQuery = true)
     Page<Object[]> getAllDTOByCategory(@Param("category") int category, Pageable pageable);
@@ -25,14 +25,14 @@ public interface ArticleRepository extends JpaRepository<Article, UUID> {
     @Query(value = "select a.id, a.title, a.\"post_time\", p.imageurlbrand, ia.imageurl " +
             "from article a " +
             "left join public.publisher p on p.id = a.publisher_id " +
-            "left join (select distinct(article_id) article_id, imageurl from image_article) ia on a.id = ia.article_id " +
+            "left join (select article_id, max(imageurl) as imageurl from image_article group by article_id) ia on a.id = ia.article_id " +
             "order by  a.\"post_time\" desc", nativeQuery = true)
     Page<Object[]> getAllDTOByDateTime(Pageable pageable);
 
     @Query(value = "SELECT a.id, a.title, a.\"post_time\", p.imageurlbrand, ia.imageurl " +
             "FROM article a " +
             "LEFT JOIN public.publisher p ON p.id = a.publisher_id " +
-            "LEFT JOIN (SELECT DISTINCT(article_id) article_id, imageurl FROM image_article) ia ON a.id = ia.article_id " +
+            "LEFT JOIN (select article_id, max(imageurl) as imageurl from image_article group by article_id) ia ON a.id = ia.article_id " +
             "WHERE a.title LIKE %:keySearch% " +
             "ORDER BY a.\"post_time\" DESC",
             nativeQuery = true)
@@ -47,7 +47,7 @@ public interface ArticleRepository extends JpaRepository<Article, UUID> {
             "order by a.\"post_time\" desc", nativeQuery = true)
     List<Object[]> getDetailById(UUID id);
 
-    @Query(value = "select a.id, a.title, a.summary, a.content, a.\"post_time\",a.category, string_agg(ia.imageurl, ',') as imageurl from article a " +
+    @Query(value = "select a.id, a.title, a.summary, a.content, a.\"post_time\",a.category, max(ia.imageurl) as imageurl from article a " +
             "            left join public.publisher p on p.id = a.publisher_id " +
             "            left join public.image_article ia on a.id = ia.article_id " +
             "            where a.publisher_id=:id" +

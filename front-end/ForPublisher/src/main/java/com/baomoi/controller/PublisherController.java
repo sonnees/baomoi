@@ -61,6 +61,9 @@ public class PublisherController {
                 return "login";
             }
         }
+
+        articlePublishers.forEach(k-> System.out.println(k.getImageURL()));
+
         int[] array = IntStream.range(1, i + 1).toArray();
         model.addAttribute("pageSize", array);
         model.addAttribute("articles",articlePublishers);
@@ -116,7 +119,6 @@ public class PublisherController {
         String restApi = "http://localhost:8080/api/v1/article-page/add";
         String s = objectMapper.writeValueAsString(article);
         HttpRequest.BodyPublisher bodyPublisher = HttpRequest.BodyPublishers.ofString(s);
-        System.out.println(s);
 
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .uri(new URI(restApi))

@@ -61,9 +61,7 @@ public class PublisherController {
                 return "login";
             }
         }
-
-        articlePublishers.forEach(k-> System.out.println(k.getImageURL()));
-
+        
         int[] array = IntStream.range(1, i + 1).toArray();
         model.addAttribute("pageSize", array);
         model.addAttribute("articles",articlePublishers);

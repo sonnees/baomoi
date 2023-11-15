@@ -61,7 +61,7 @@ public class PublisherController {
                 return "login";
             }
         }
-
+        
         int[] array = IntStream.range(1, i + 1).toArray();
         model.addAttribute("pageSize", array);
         model.addAttribute("articles",articlePublishers);

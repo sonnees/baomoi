@@ -47,7 +47,7 @@ export default function Detail({route}) {
   return (
     <View style={styles.container}>
       <View style={{height: 50, backgroundColor: '#FFFFFF', flexDirection:'row', }}>
-        <TouchableOpacity onPress={()=>navigation.navigate('Home')} style={{ flex: 1, backgroundColor:'#FFF',}}>
+        <TouchableOpacity onPress={()=>navigation.goBack()} style={{ flex: 1, backgroundColor:'#FFF',}}>
           <Image style={{ height: "50%", width: 'auto', resizeMode: 'contain', marginTop: 9 }} source={require("../assets/back.png")} />
         </TouchableOpacity>
 

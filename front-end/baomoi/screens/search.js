@@ -7,7 +7,10 @@ import { MyContext } from '../context';
 
 
 const Item = ({ item }) => {
-  let fontSize=16
+  // let fontSize=16
+  let { configAccount, setConfigAccount, account, user, ipv4, setIpv4, publisher, setUser, setPublisher } = useContext(MyContext)
+  let fontSizeO = configAccount.fontSize
+  let [fontSize, setSize] = useState(fontSizeO)
   const navigation = useNavigation();
   const [currentDate, setCurrentDate] = useState('');
   useEffect(() => {
@@ -49,9 +52,14 @@ const Item = ({ item }) => {
   };
 
 export default function Search() {
-  let fontSize =16;
+  // let fontSize =16;
   const navigation = useNavigation();
-  const {ipv4, setIpv4} = useContext(MyContext);
+  let { configAccount, setConfigAccount, account, user, ipv4, setIpv4, publisher, setUser, setPublisher } = useContext(MyContext)
+  let fontSizeO = configAccount.fontSize
+  let [fontSize, setSize] = useState(fontSizeO)
+
+
+  const [textSearch, setTextSearch] = useState("");
 
   const [data, setData] = useState([]);
 
@@ -68,8 +76,15 @@ export default function Search() {
     <View style={styles.container}>
         <View style={{flexDirection:'row', backgroundColor: '#459ead', justifyContent:'space-around', alignItems:'center', height: 34}}>
           
-          <TextInput style={{borderWidth:1, position: 'absolute', left:'5%', paddingLeft:'10%', paddingVertical:1, borderRadius: 5, backgroundColor: '#d9dbda', width: '75%',}} placeholder='Tìm kiếm'/>
-          <Image style={{height: 20, width: 20, position: 'absolute', left:'7%'}} source={require('../assets/search.png')}/>
+          <TextInput style={{borderWidth:1, position: 'absolute', left:'5%', paddingLeft:'5%', paddingVertical:1, borderRadius: 5, backgroundColor: '#d9dbda', width: '75%',}} placeholder='Tìm kiếm'
+            onChangeText={(text)=> {setTextSearch(text)}}
+            // onSubmitEditing={navigation.navigate("Home", {textSearch: textSearch})}
+          />
+
+          <TouchableOpacity onPress={()=>navigation.navigate("Home", {textSearch: textSearch})} style={{ position: 'absolute', right:'24%'}}>
+            <Image style={{height: 20, width: 20}} source={require('../assets/search.png')}/>
+          </TouchableOpacity>
+          {/* <Image style={{height: 20, width: 20, position: 'absolute', right:'24%'}} source={require('../assets/search.png')}/> */}
 
           <TouchableOpacity onPress={()=>navigation.navigate('Home')} style={{ position: 'absolute', right:'7%'}}>
             <Text style={{color:'#FFF', fontSize:16}}>Đóng</Text>

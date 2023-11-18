@@ -6,7 +6,9 @@ import { MyContext } from '../context';
 
 
 export default function Detail({route}) {
-  const {ipv4, setIpv4} = useContext(MyContext);
+  let { configAccount, setConfigAccount, account, user, ipv4, setIpv4, publisher, setUser, setPublisher } = useContext(MyContext)
+  let fontSizeO = configAccount.fontSize
+  let [fontSize, setSize] = useState(fontSizeO)
 
   const { id, tg } = route.params;
   // console.log(tg);

@@ -193,5 +193,3 @@ function checkDay(currentDate, day) {
     else if (currentDate[5]!=day[5])
       return currentDate[5] - day[5] + ' giây';
 }
-
-

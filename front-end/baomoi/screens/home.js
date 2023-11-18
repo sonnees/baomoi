@@ -10,10 +10,8 @@ import { MyContext } from '../context';
 
 
 const Item = ({ item }) => {
-  let { configAccount, setConfigAccount, account, user, ipv4, publisher, setUser, setPublisher } = useContext(MyContext)
-  let fontSizeO = configAccount.fontSize
-  let [fontSize, setSize] = useState(fontSizeO)
   // let fontSize=16
+  const {fontSize} = useContext(MyContext);
   const navigation = useNavigation();
   const [currentDate, setCurrentDate] = useState('');
   useEffect(() => {
@@ -29,7 +27,7 @@ const Item = ({ item }) => {
     return (
         
         <TouchableOpacity onPress={()=>navigation.navigate('Detail', {id: item.id, tg: checkDay(currentDate, item.postTime)+''}   )}>        
-          <View style={{flexDirection:'row', justifyContent:'space-around', height:120 ,gap:10}}>
+          <View style={{flexDirection:'row', justifyContent:'space-around', height: 120,gap:10}}>
             <View style={{flex:4, alignItems:'center'}}>
                 <Image style={{flex:1, height: 100, width: 140, borderRadius: 5, marginVertical:10}} source={{uri: item.imageURL}}/>
                 {/* <Image style={{flex:1, height: 120, width: 140, resizeMode:'contain'}} source={require('../assets/image_article/image_article1.jpg')}></Image> */}
@@ -61,15 +59,12 @@ export default function Home() {
     const [load, setLoad] = useState(0);
     const [flag, setFlag] = useState(false);
     const [data, setData] = useState([]);
-    let { configAccount, setConfigAccount, account, user, ipv4, setIpv4, publisher, setUser, setPublisher } = useContext(MyContext)
-    let fontSizeO = configAccount.fontSize
-    let [fontSize, setSize] = useState(fontSizeO)
+    const {ipv4, setIpv4} = useContext(MyContext);
     
     // setIpv4('192.168.1.7');
     // console.log(ipv4);
     const route = useRoute();
     const { catagory } = route.params || { catagory: "" };
-    const { textSearch } = route.params || { textSearch: "" };
 
   
     useEffect(() => {
@@ -78,11 +73,6 @@ export default function Home() {
         fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page='+load+'&size=10')
           .then(response => response.json())
           .then(json => setData(json.content));
-      } else if (textSearch !== "") {
-          textSearch
-        fetch('http://'+ipv4+':8080/api/v1/article-page/search?keySearch='+textSearch)
-        .then(response => response.json())
-        .then(json => setData(json.content));
       } else if (catagory !== "") {
           // console.log(catagory);
         fetch('http://'+ipv4+':8080/api/v1/article-page/article-category?category='+catagory+'&page='+load+'&size=5')
@@ -203,5 +193,3 @@ function checkDay(currentDate, day) {
     else if (currentDate[5]!=day[5])
       return currentDate[5] - day[5] + ' giây';
 }
-
-

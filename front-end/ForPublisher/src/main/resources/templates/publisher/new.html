@@ -21,47 +21,47 @@
                 </select>
             </div>
             <div class="form-group" style="margin-bottom: 10px">
-                <input th:field="*{title}" type="text"  class="form-control" placeholder="title" style=" font-size: 16px; margin-bottom: 10px; font-weight: bold">
+                <input th:field="*{title}" type="text"  class="form-control" placeholder="Tiêu đề" style=" font-size: 16px; margin-bottom: 10px; font-weight: bold">
             </div>
             <div class="form-group" style="margin-bottom: 10px">
-                <input th:field="*{summary}" type="text"  class="form-control" placeholder="summary" style=" font-size: 16px; margin-bottom: 10px">
+                <input th:field="*{summary}" type="text"  class="form-control" placeholder="Tóm tắt nội dung" style=" font-size: 16px; margin-bottom: 10px">
             </div>
             <div class="form-group" style="margin-bottom: 10px">
                 <span>Vị trí cần chèn ảnh thì gõ '{img}'.</span>
             </div>
             <div class="form-group" style="margin-bottom: 10px">
-                <textarea th:field="*{content}" class="form-control" placeholder="content" style=" font-size: 16px; margin-bottom: 10px; height: 200px" ></textarea>
+                <textarea th:field="*{content}" class="form-control" placeholder="Nội dung bài báo" style=" font-size: 16px; margin-bottom: 10px; height: 200px" ></textarea>
             </div>
             <div class="form-group">
                 <div id="imgAdd1" style="display: none">
                     <label style="color: #858587">image 1</label>
-                    <input th:field="*{imageArticles[0].imageURL}" type="text" class="form-control row" placeholder="link image" style=" font-size: 16px; margin-bottom: 10px;width: 44%;margin-right: 10%; margin-left: 1%">
-                    <input th:field="*{imageArticles[0].title}" type="text"  class="form-control row" placeholder="title image" style=" font-size: 16px; margin-bottom: 10px; width: 44%;margin-left: 1%">
+                    <input th:field="*{imageArticles[0].imageURL}" type="text" class="form-control row" placeholder="URL đường dẫn hình ảnh" style=" font-size: 16px; margin-bottom: 10px;width: 44%;margin-right: 10%; margin-left: 1%">
+                    <input th:field="*{imageArticles[0].title}" type="text"  class="form-control row" placeholder="Nội dung của bức ảnh" style=" font-size: 16px; margin-bottom: 10px; width: 44%;margin-left: 1%">
                 </div>
                 <div id="imgAdd2" style="display: none">
                     <label style="color: #858587">image 2</label>
-                    <input th:field="*{imageArticles[1].imageURL}" type="text" class="form-control row" placeholder="link image" style=" font-size: 16px; margin-bottom: 10px;width: 44%;margin-right: 10%; margin-left: 1%">
-                    <input th:field="*{imageArticles[1].title}" type="text"  class="form-control row" placeholder="title image" style=" font-size: 16px; margin-bottom: 10px; width: 44%;margin-left: 1%">
+                    <input th:field="*{imageArticles[1].imageURL}" type="text" class="form-control row" placeholder="URL đường dẫn hình ảnh" style=" font-size: 16px; margin-bottom: 10px;width: 44%;margin-right: 10%; margin-left: 1%">
+                    <input th:field="*{imageArticles[1].title}" type="text"  class="form-control row" placeholder="Nội dung của bức ảnh" style=" font-size: 16px; margin-bottom: 10px; width: 44%;margin-left: 1%">
                 </div>
 
                 <div id="imgAdd3" style="display: none">
                     <label style="color: #858587">image 3</label>
-                    <input th:field="*{imageArticles[2].imageURL}" type="text" class="form-control row" placeholder="link image" style=" font-size: 16px; margin-bottom: 10px;width: 44%;margin-right: 10%; margin-left: 1%">
-                    <input th:field="*{imageArticles[2].title}" type="text"  class="form-control row" placeholder="title image" style=" font-size: 16px; margin-bottom: 10px; width: 44%;margin-left: 1%">
+                    <input th:field="*{imageArticles[2].imageURL}" type="text" class="form-control row" placeholder="URL đường dẫn hình ảnh" style=" font-size: 16px; margin-bottom: 10px;width: 44%;margin-right: 10%; margin-left: 1%">
+                    <input th:field="*{imageArticles[2].title}" type="text"  class="form-control row" placeholder="Nội dung của bức ảnh" style=" font-size: 16px; margin-bottom: 10px; width: 44%;margin-left: 1%">
                 </div>
 
             </div>
             <div class="form-group" >
-                <button type="button" onclick="addImageF()" id="addImage" class="btn btn-secondary" style="font-weight: bold; width: 10% ; margin-bottom: 10px">add image</button>
+                <button type="button" onclick="addImageF()" id="addImage" class="btn btn-secondary" style="font-weight: bold; margin-bottom: 10px">Thêm hình ảnh</button>
             </div>
 
             <div class="form-group">
-                <button id="submit" type="submit" class="btn btn-success" style="display: none;font-weight: bold; width: 20% ; margin-top: 20px">Submit</button>
+                <button id="submit" type="submit" class="btn btn-success" style="display: none;font-weight: bold; width: 20% ; margin-top: 20px">Đăng bài</button>
 
             </div>
 
         </form>
-        <div style="height: 100px"></div>
+        <div style="height: 200px"></div>
     </div>
 
 </body>

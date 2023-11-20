@@ -15,7 +15,7 @@ export default function App() {
   const Stack = createStackNavigator()
   let [configAccount, setConfigAccount] = useState({})
   let [account, setAccount] = useState({})
-  let [ipv4, setIpv4] = useState("192.168.1.3")
+  let [ipv4, setIpv4] = useState("192.168.1.9")
   let [user, setUser] = useState({})
   let [publisher, setPublisher] = useState({})
 

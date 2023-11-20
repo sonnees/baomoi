@@ -63,10 +63,10 @@ export default function Search() {
 
   const [data, setData] = useState([]);
 
-    useEffect(()=>{
-      fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page=0&size=3')
-      .then(response => response.json())
-      .then(json => setData(json.content));
+  useEffect(()=>{
+    fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page=0&size=3')
+    .then(response => response.json())
+    .then(json => setData(json.content));
   }, []);
 
   // http://localhost:8080/api/v1/article-page/article-new?page=0&size=3
@@ -77,8 +77,9 @@ export default function Search() {
         <View style={{flexDirection:'row', backgroundColor: '#459ead', justifyContent:'space-around', alignItems:'center', height: 34}}>
           
           <TextInput style={{borderWidth:1, position: 'absolute', left:'5%', paddingLeft:'5%', paddingVertical:1, borderRadius: 5, backgroundColor: '#d9dbda', width: '75%',}} placeholder='Tìm kiếm'
-            onChangeText={(text)=> {setTextSearch(text)}}
+            onChangeText={(text)=> {setTextSearch(text); console.log(text);}}
             // onSubmitEditing={navigation.navigate("Home", {textSearch: textSearch})}
+            
           />
 
           <TouchableOpacity onPress={()=>navigation.navigate("Home", {textSearch: textSearch})} style={{ position: 'absolute', right:'24%'}}>
@@ -86,7 +87,7 @@ export default function Search() {
           </TouchableOpacity>
           {/* <Image style={{height: 20, width: 20, position: 'absolute', right:'24%'}} source={require('../assets/search.png')}/> */}
 
-          <TouchableOpacity onPress={()=>navigation.navigate('Home')} style={{ position: 'absolute', right:'7%'}}>
+          <TouchableOpacity onPress={()=>navigation.goBack()} style={{ position: 'absolute', right:'7%'}}>
             <Text style={{color:'#FFF', fontSize:16}}>Đóng</Text>
           </TouchableOpacity>
 

@@ -115,6 +115,7 @@ export default function Home() {
       fet();
     }, [catagory, textSearch]);
 
+
     useEffect(() => {
       var date = new Date().getDate(); //Current Date
       var month = new Date().getMonth() + 1; //Current Month

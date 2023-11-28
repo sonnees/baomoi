@@ -1,25 +1,31 @@
-# BÁO MỚI - BACK END
-## Tổng quan
+# BÁO MỚI
+![ERD](/img/client-server.jpg)
 
+- [BACK-END](#back-end)
+- [FRONT-END](#front-end)
+
+<hr>
+
+## BACK-END
+### Tổng Quan
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=black)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Spring Boot Badge](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff&style=for-the-badge)
 
 ![ERD](/img/diagram.png)
-![ERD](/img/client-server.jpg)
 
-## Mô tả
+### Mô tả
 Sử dụng `spring data rest` để giao tiếp với front-end. <br>
 Sử dụng `entity dto` để truyền dữ liệu tới front-end.<br>
 Để đảm bảo code hoạt động tốt, tôi sử dụng `junit` để test unit các modun của chương trình. 
 
-## REST API
-### Config
+### REST API
+#### Config
 - port: 8080. <br>
 - base-path: `/api/v1`. <br>
 - default-page-size: 5. <br>
 - limit-param-name: 10. <br>
-### API Endpoint
+#### API Endpoint
 - [GET] Return account by gmail and password (account not exist return null): <br>
   `/account/login?gmail={gmail}&password={password}`
 
@@ -46,3 +52,5 @@ Sử dụng `entity dto` để truyền dữ liệu tới front-end.<br>
 
 - [GET] Return article by id: <br>
   `/article-page/article-detail?id={id}`
+
+## FRONT-END

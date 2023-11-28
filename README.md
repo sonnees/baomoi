@@ -1,34 +1,32 @@
-# BÁO MỚI
+[FRONT-END](#front-end) <br>
+[BACK-END](#back-end)
+  
 ![ERD](/img/client-server.jpg)
-
-- [FRONT-END](#front-end)
-- [BACK-END](#back-end)
 
 <hr>
 
-## FRONT-END
+# FRONT-END
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png?20220706172052" alt="run-in-android" height="12" width="20"> [Run in android](https://youtu.be/NhDYwpdV41M)
 
-## BACK-END
-### Tổng Quan
+# BACK-END
+## Tổng Quan
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=black)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Spring Boot Badge](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff&style=for-the-badge)
 
 ![ERD](/img/diagram.png)
 
-### Mô tả
-Sử dụng `spring data rest` để giao tiếp với front-end. <br>
-Sử dụng `entity dto` để truyền dữ liệu tới front-end.<br>
+## Mô tả
+Sử dụng `spring ecosytem`. <br>
 Để đảm bảo code hoạt động tốt, tôi sử dụng `junit` để test unit các modun của chương trình. 
 
-### REST API
-#### Config
+## REST API
+### Config
 - port: 8080. <br>
 - base-path: `/api/v1`. <br>
 - default-page-size: 5. <br>
 - limit-param-name: 10. <br>
-#### API Endpoint
+### API Endpoint
 - [GET] Return account by gmail and password (account not exist return null): <br>
   `/account/login?gmail={gmail}&password={password}`
 

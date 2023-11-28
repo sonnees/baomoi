@@ -71,29 +71,50 @@ export default function Home() {
     const { catagory } = route.params || { catagory: "" };
     const { textSearch } = route.params || { textSearch: "" };
 
+    console.log(catagory+textSearch+load);
+
+    // fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page=0&size=7')
+    //   .then(response => response.json())
+    //   .then(json => setData(json.content));
+
+
+    
   
     useEffect(() => {
-      setData([])
-      if (catagory == "MOI") {
-        fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page='+load+'&size=10')
-          .then(response => response.json())
-          .then(json => setData(json.content));
-      } else if (textSearch !== "") {
-          textSearch
-        fetch('http://'+ipv4+':8080/api/v1/article-page/search?keySearch='+textSearch)
-        .then(response => response.json())
-        .then(json => setData(json.content));
-      } else if (catagory !== "") {
-          // console.log(catagory);
-        fetch('http://'+ipv4+':8080/api/v1/article-page/article-category?category='+catagory+'&page='+load+'&size=5')
-        .then(response => response.json())
-        .then(json => setData(json.content));
-      } else {
-        fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page='+load+'&size=10')
-          .then(response => response.json())
-          .then(json => setData(json.content));
-      }
-    }, [catagory, ipv4]);
+      const fet = async () => {
+        try {
+          setLoad(0);
+          let apiUrl = '';
+    
+          if (catagory === "MOI") {
+            console.log("ngungu1");
+            apiUrl = 'http://' + ipv4 + ':8080/api/v1/article-page/article-new?page=0&size=7';
+          } else if (textSearch !== "" && textSearch !== undefined) {
+            console.log("ngungu2");
+            console.log(textSearch);
+            apiUrl = 'http://' + ipv4 + ':8080/api/v1/article-page/search?keySearch=' + textSearch;
+          } else if (catagory !== "" && catagory !== undefined ) {
+            console.log("ngungu3");
+            apiUrl = 'http://' + ipv4 + ':8080/api/v1/article-page/article-category?category=' + catagory + '&page=0&size=7';
+          } else {
+            console.log("ngungu4");
+            apiUrl = 'http://' + ipv4 + ':8080/api/v1/article-page/article-new?page=0&size=7';
+          }
+    
+          const response = await fetch(apiUrl);
+          const json = await response.json();
+          setData(json.content);
+          data.forEach(i => {
+            console.log(i.id);
+          });
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+    
+      fet();
+    }, [catagory, textSearch]);
+
 
     useEffect(() => {
       var date = new Date().getDate(); //Current Date
@@ -106,31 +127,40 @@ export default function Home() {
     }, []);
 
     
-
-    const   loadMoreData = () => {
-      setData([])
-      if (!flag) {
-        // Đánh dấu bắt đầu tải dữ liệu
-        setLoad(load+1);
+    const fetchData = async (pageIndex) => {
+      const url = catagory !== "" && catagory !== "MOI"
+        ? `http://${ipv4}:8080/api/v1/article-page/article-category?category=${catagory}&page=${pageIndex}&size=7`
+        : `http://${ipv4}:8080/api/v1/article-page/article-new?page=${pageIndex}&size=7`;
+    
+      const response = await fetch(url);
+      const json = await response.json();
+    
+      return json.content;
+    };
+    
+    const loadMoreData = async () => {
+      try {
+        // Đặt cờ đang tải
         setFlag(true);
-        for (let index = 1; index <= load; index++) {
-          if (catagory !== "") {
-            // console.log(catagory);
-            fetch('http://'+ipv4+':8080/api/v1/article-page/article-category?category='+catagory+'&page='+index+'&size=5')
-              .then(response => response.json())
-              .then(json => setData(data.concat(json.content)));
-          } else {
-            fetch('http://'+ipv4+':8080/api/v1/article-page/article-new?page='+index+'&size=5')
-              .then(response => response.json())
-              .then(json => setData(data.concat(json.content)));
-          }
-          
-        }
-
-        //isLoading: false, // Đánh dấu hoàn thành tải dữ liệu
+    
+        // Tăng giá trị load
+        setLoad((prevLoad) => prevLoad + 1);
+    
+        // Fetch dữ liệu
+        const results = await fetchData(load);
+    
+        // Kiểm tra dữ liệu trùng lặp và cập nhật trạng thái data
+        const uniqueResults = results.filter((result) => !data.some((item) => item.id === result.id));
+        setData((prevData) => [...prevData, ...uniqueResults]);
+      } catch (error) {
+        console.error("Lỗi khi tải dữ liệu:", error);
+      } finally {
+        // Đặt lại cờ đang tải
         setFlag(false);
       }
-    }
+    };
+    
+    
 
     // console.log(data);
 
@@ -151,10 +181,10 @@ export default function Home() {
         <View style={{flex:16, marginHorizontal:15}}>
             <FlatList
             data={data}
-            renderItem={({item}) => <Item item={item} />}
-            // keyExtractor={item => item.id}
-            // onEndReached={loadMoreData} // Xác định khi cần tải thêm dữ liệu
-            // onEndReachedThreshold={0.1}
+            renderItem={({item}) => <Item item={item} /> }
+            keyExtractor={item => item.id}
+            onEndReached={loadMoreData} // Xác định khi cần tải thêm dữ liệu
+            onEndReachedThreshold={0.01}
             />
 
         </View>

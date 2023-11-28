@@ -1,4 +1,4 @@
-import {Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useContext } from 'react';
@@ -67,21 +67,23 @@ export default function Detail({route}) {
       </View>
 
 
-      <SafeAreaView style={{flex:1, padding:15, alignItems: 'center'}}>
-        <Text style={{fontSize: 20, fontWeight: 'bold', marginVertical:10}}>{data.title}</Text>
-        
-        <Text style={{fontSize: 16, fontWeight: '400', marginVertical:10, alignSelf:'flex-start'}}>{tg}</Text>
+      <ScrollView>
+        <SafeAreaView style={{flex:1, padding:15, alignItems: 'center'}}>
+          <Text style={{fontSize: 20, fontWeight: 'bold', marginVertical:10}}>{data.title}</Text>
+          
+          <Text style={{fontSize: 16, fontWeight: '400', marginVertical:10, alignSelf:'flex-start'}}>{tg}</Text>
 
-        <Text style={{fontSize: 16, fontWeight: '500', marginVertical:10}}>{data.summary}</Text>
+          <Text style={{fontSize: 16, fontWeight: '500', marginVertical:10}}>{data.summary}</Text>
 
-        
-        {/* <Image source={{uri: data.imageURLs[0] }} style={{height: 200, width: 320,}}/> */}
-        
+          
+          {/* <Image source={{uri: data.imageURLs[0] }} style={{height: 200, width: 320,}}/> */}
+          
 
-        {/* <Text style={{fontSize: 16, fontWeight: '400', marginVertical:10}}>{data.content}</Text> */}
+          {/* <Text style={{fontSize: 16, fontWeight: '400', marginVertical:10}}>{data.content}</Text> */}
 
-        <ArticleScreen/>
-      </SafeAreaView>
+          <ArticleScreen/>
+        </SafeAreaView>
+      </ScrollView>
       
       
     </View>

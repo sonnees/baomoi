@@ -1,10 +1,13 @@
 # BÁO MỚI
 ![ERD](/img/client-server.jpg)
 
-- [BACK-END](#back-end)
 - [FRONT-END](#front-end)
+- [BACK-END](#back-end)
 
 <hr>
+
+## FRONT-END
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png?20220706172052" alt="run-in-android" height="12" width="20"> [Run in android](https://youtu.be/NhDYwpdV41M)
 
 ## BACK-END
 ### Tổng Quan
@@ -52,5 +55,3 @@ Sử dụng `entity dto` để truyền dữ liệu tới front-end.<br>
 
 - [GET] Return article by id: <br>
   `/article-page/article-detail?id={id}`
-
-## FRONT-END
